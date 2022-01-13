@@ -76,9 +76,9 @@ struct HomeView: View {
                 }
                 .foregroundColor(Color("BasicFontColor"))
                 }
-                
-                
             }
+            
+            
         }
     }
     
