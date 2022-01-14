@@ -24,6 +24,10 @@
 		B0BB5F922790A0DF00C4066D /* NewWalletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0BB5F912790A0DF00C4066D /* NewWalletView.swift */; };
 		B0BB5F942790D39400C4066D /* TransactionDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0BB5F932790D39400C4066D /* TransactionDisplay.swift */; };
 		B0BB5F962790D9E300C4066D /* IncomingTransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0BB5F952790D9E300C4066D /* IncomingTransactionView.swift */; };
+		B0ED6F2C279205EF00ADA9E8 /* OutgoingTransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ED6F2B279205EF00ADA9E8 /* OutgoingTransactionView.swift */; };
+		B0ED6F2E279208FD00ADA9E8 /* MonthlyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ED6F2D279208FD00ADA9E8 /* MonthlyView.swift */; };
+		B0ED6F3127920A2D00ADA9E8 /* TransactionsCellEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ED6F3027920A2D00ADA9E8 /* TransactionsCellEntities.swift */; };
+		B0ED6F3327920A9800ADA9E8 /* NumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ED6F3227920A9800ADA9E8 /* NumberFormatter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +49,10 @@
 		B0BB5F912790A0DF00C4066D /* NewWalletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWalletView.swift; sourceTree = "<group>"; };
 		B0BB5F932790D39400C4066D /* TransactionDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDisplay.swift; sourceTree = "<group>"; };
 		B0BB5F952790D9E300C4066D /* IncomingTransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomingTransactionView.swift; sourceTree = "<group>"; };
+		B0ED6F2B279205EF00ADA9E8 /* OutgoingTransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutgoingTransactionView.swift; sourceTree = "<group>"; };
+		B0ED6F2D279208FD00ADA9E8 /* MonthlyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyView.swift; sourceTree = "<group>"; };
+		B0ED6F3027920A2D00ADA9E8 /* TransactionsCellEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsCellEntities.swift; sourceTree = "<group>"; };
+		B0ED6F3227920A9800ADA9E8 /* NumberFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +85,7 @@
 		B004789D278F17E100BE9D9C /* gestaoFinanceiraPessoal */ = {
 			isa = PBXGroup;
 			children = (
+				B0ED6F2F2792097200ADA9E8 /* Utils */,
 				B0BB5F8E2790693C00C4066D /* View */,
 				B0BB5F7B278F8D4400C4066D /* Components */,
 				B004789E278F17E100BE9D9C /* gestaoFinanceiraPessoalApp.swift */,
@@ -118,8 +127,19 @@
 				B0BB5F8C279068F200C4066D /* HomeView.swift */,
 				B0BB5F912790A0DF00C4066D /* NewWalletView.swift */,
 				B0BB5F952790D9E300C4066D /* IncomingTransactionView.swift */,
+				B0ED6F2B279205EF00ADA9E8 /* OutgoingTransactionView.swift */,
+				B0ED6F2D279208FD00ADA9E8 /* MonthlyView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		B0ED6F2F2792097200ADA9E8 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				B0ED6F3027920A2D00ADA9E8 /* TransactionsCellEntities.swift */,
+				B0ED6F3227920A9800ADA9E8 /* NumberFormatter.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -192,11 +212,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0ED6F2E279208FD00ADA9E8 /* MonthlyView.swift in Sources */,
+				B0ED6F3127920A2D00ADA9E8 /* TransactionsCellEntities.swift in Sources */,
 				B0BB5F8B2790640000C4066D /* BasicButton.swift in Sources */,
+				B0ED6F3327920A9800ADA9E8 /* NumberFormatter.swift in Sources */,
 				B0BB5F962790D9E300C4066D /* IncomingTransactionView.swift in Sources */,
 				B0BB5F852790453B00C4066D /* SavedChart.swift in Sources */,
 				B00478A8278F17E300BE9D9C /* Persistence.swift in Sources */,
 				B0BB5F922790A0DF00C4066D /* NewWalletView.swift in Sources */,
+				B0ED6F2C279205EF00ADA9E8 /* OutgoingTransactionView.swift in Sources */,
 				B0BB5F83278FA73F00C4066D /* SavedMoneyButton.swift in Sources */,
 				B0BB5F81278FA2FD00C4066D /* IncomingButton.swift in Sources */,
 				B0BB5F8927905F4700C4066D /* OnBoardingSteps.swift in Sources */,

@@ -1,13 +1,13 @@
 //
-//  IncomingTransactionView.swift
+//  OutgoingTransactionView.swift
 //  gestaoFinanceiraPessoal
 //
-//  Created by Raphael Alkamim on 13/01/22.
+//  Created by Raphael Alkamim on 14/01/22.
 //
 
 import SwiftUI
 
-struct IncomingTransactionView: View {
+struct OutgoingTransactionView: View {
     var categories: [String] = ["Nenhuma", "Alimentação", "Compras", "Educação", "Moradia", "Saúde", "Viagens"]
     var frequence: [String] = ["Nenhuma","Diariamente", "Semanalmente", "Mensalmente", "Anualmente"]
     var wallets: [String] = ["Padrão", "Nu Banck", "Itau", "Santander", "Em casa", "Dollar"]
@@ -21,8 +21,6 @@ struct IncomingTransactionView: View {
     @State var selectionTransactionDestination: String = "Padrão"
     
     
-    
-    
     var body: some View {
         
         
@@ -30,7 +28,7 @@ struct IncomingTransactionView: View {
             ZStack {
                 Color("ViewBackgroundColor").ignoresSafeArea()
                 VStack {
-                    TransactionDisplay(moneySymbol: "R$", transactionSymbol: "+", transactionColor: "GreenColor", transactionValue: 10000)
+                    TransactionDisplay(moneySymbol: "R$", transactionSymbol: "-", transactionColor: "RedColor", transactionValue: 10000)
                     
                     
                     
@@ -115,9 +113,8 @@ struct IncomingTransactionView: View {
     
 }
 
-
-struct IncomingTransactionView_Previews: PreviewProvider {
+struct OutgoingTransactionView_Previews: PreviewProvider {
     static var previews: some View {
-        IncomingTransactionView()
+        OutgoingTransactionView()
     }
 }

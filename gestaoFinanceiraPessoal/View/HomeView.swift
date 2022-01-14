@@ -7,15 +7,6 @@
 
 import SwiftUI
 
-struct New : Identifiable {
-    var id: String
-    
-    var transactionName: String
-    var transactionColor: Color
-    var transactionSymbol: String
-    
-    
-}
 
 struct HomeView: View {
     let transactionsArray: [String] = ["Compra", "Salario", "Aluguel"]

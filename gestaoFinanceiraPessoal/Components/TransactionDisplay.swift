@@ -28,9 +28,9 @@ struct TransactionDisplay: View {
                 .padding(.leading,10)
             
             TextField("",value: $transactionValue, formatter: formatter)
-                .font(.system(size: 36))
+                .font(.system(size: 36, weight: .bold))
                 .foregroundColor(Color(transactionColor))
-                .frame(alignment: .trailing)
+                .multilineTextAlignment(.trailing)
                 
             
             Text(transactionSymbol).font(.system(size: 36)).bold()
@@ -45,6 +45,6 @@ struct TransactionDisplay: View {
 
 struct TransactionDisplay_Previews: PreviewProvider {
     static var previews: some View {
-        TransactionDisplay(moneySymbol: "R$", transactionSymbol: "+",transactionColor: " GreenColor", transactionValue: 1100)
+        TransactionDisplay(moneySymbol: "R$", transactionSymbol: "+",transactionColor: "GreenColor", transactionValue: 1100)
     }
 }
