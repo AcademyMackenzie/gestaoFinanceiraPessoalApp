@@ -13,45 +13,50 @@ struct IncomingButton: View {
     var value: Double
     
     var body: some View {
-        VStack(){
-            
-            HStack(){
-                Text(title).font(.system(size: 13))
-                    .frame(width: 100, height: 15, alignment: .leading)
-                    .foregroundColor(Color("BasicFontColor"))
-
-
-                Spacer()
-                Image(systemName: "plus.circle.fill")
-                    .frame(width: 15, height: 15, alignment: .trailing)
-                    .foregroundColor(Color("GreenColor"))
-
+        //Button
+        Button(action:{
+            print("oi")
+        }) {
+            VStack(){
+                
+                HStack(){
+                    Text(title).font(.system(size: 13))
+                        .frame(width: 100, height: 15, alignment: .leading)
+                        .foregroundColor(Color("BasicFontColor"))
+                    
+                    
+                    Spacer()
+                    Image(systemName: "plus.circle.fill")
+                        .frame(width: 15, height: 15, alignment: .trailing)
+                        .foregroundColor(Color("GreenColor"))
+                    
+                    
+                }
+                .frame(width: 130, height: 15, alignment: .center)
+                .padding(.top, 15)
+                
+                
+                HStack(){
+                    Text(moneySymbol).font(.system(size: 17).bold())
+                        .frame(width: 25, height: 20, alignment: .leading)
+                        .foregroundColor(Color("GreenColor"))
+                    
+                    
+                    Text(String(value)).font(.system(size: 17).bold())
+                        .frame(width: 95, height: 20, alignment: .leading)
+                        .foregroundColor(Color("GreenColor"))
+                    
+                    
+                }
+                .frame(width: 130, height: 20, alignment: .bottom)
+                .padding(.bottom, 10)
                 
             }
-            .frame(width: 130, height: 15, alignment: .center)
-            .padding(.top, 15)
-            
-            
-            HStack(){
-                Text(moneySymbol).font(.system(size: 17).bold())
-                    .frame(width: 25, height: 20, alignment: .leading)
-                    .foregroundColor(Color("GreenColor"))
-
-                
-                Text(String(value)).font(.system(size: 17).bold())
-                    .frame(width: 95, height: 20, alignment: .leading)
-                    .foregroundColor(Color("GreenColor"))
-
-                
-            }
-            .frame(width: 130, height: 20, alignment: .bottom)
-            .padding(.bottom, 10)
-            
+            .frame(width: 150, height: 65)
+            .background(Color("ElementsBackgroundColor"))
+            .cornerRadius(10)
+            .shadow(color: Color("ShadowColor"), radius: 0.8, x: 0.5, y: 0.5)
         }
-        .frame(width: 150, height: 65)
-        .background(Color("ElementsBackgroundColor"))
-        .cornerRadius(10)
-        .shadow(color: Color("ShadowColor"), radius: 0.8, x: 0.5, y: 0.5)
     }
 }
 

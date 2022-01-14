@@ -15,6 +15,8 @@ struct TransactionsCell: View {
     
     var body: some View {
         HStack {
+            Circle()
+                .frame(width: 25, height: 25)
             Text(title).font(.system(size: 17))
                 .padding(.leading, 15)
                 .frame(width: 200, height: 30, alignment: .leading)
