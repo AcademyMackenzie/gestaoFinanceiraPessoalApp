@@ -18,6 +18,7 @@ struct SavedChart: View {
                 Rectangle()
                     .foregroundColor(Color("SavedMoneyChartColor"))
                     .frame(width: percentageSaved)
+                    
                 
             }
             .frame(width: 100, height: 30, alignment: .leading)
@@ -27,10 +28,12 @@ struct SavedChart: View {
             HStack(){
                 Text("0%").font(.system(size: 7))
                     .frame(alignment: .leading)
+                    .foregroundColor(Color("BasicFontColor"))
                 
                 Spacer()
                 Text("100%").font(.system(size: 7))
                     .frame(alignment: .trailing)
+                    .foregroundColor(Color("BasicFontColor"))
             }
             .frame(width: 100, alignment: .center)
         }

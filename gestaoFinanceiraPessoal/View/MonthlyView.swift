@@ -13,7 +13,7 @@ struct MonthlyView: View {
     var outgoingValue: Double
     var balanceValue: Double
     var savedValue: Double
-    var month: String = "Janeiro"
+    var month: String
     
     
     let transactionsArray: [String] = ["Compra", "Salario", "Aluguel"]
@@ -27,7 +27,8 @@ struct MonthlyView: View {
     }()
     
     
-    var transactions: [New] = [New(id: "1", transactionName: "Compra", transactionColor: .green, transactionSymbol: "$"),New(id: "2",transactionName: "assadasda", transactionColor: .green, transactionSymbol: "$"), New(id: "3",transactionName: "aaaaaaa", transactionColor: .green, transactionSymbol: "$"),New(id: "1", transactionName: "Compra", transactionColor: .green, transactionSymbol: "$"),New(id: "2",transactionName: "assadasda", transactionColor: .green, transactionSymbol: "$"),New(id: "1", transactionName: "Compra", transactionColor: .green, transactionSymbol: "$"),New(id: "2",transactionName: "assadasda", transactionColor: .green, transactionSymbol: "$"),New(id: "1", transactionName: "Compra", transactionColor: .green, transactionSymbol: "$"),New(id: "2",transactionName: "assadasda", transactionColor: .green, transactionSymbol: "$"),New(id: "1", transactionName: "Compra", transactionColor: .green, transactionSymbol: "$"),New(id: "2",transactionName: "assadasda", transactionColor: .green, transactionSymbol: "$"),]
+    
+    var transactions: [New] = [New(id: "1", transactionName: "Compra", transactionColor: .green, transactionSymbol: "$"),New(id: "2",transactionName: "assadasda", transactionColor: .green, transactionSymbol: "$"), New(id: "3",transactionName: "aaaaaaa", transactionColor: .green, transactionSymbol: "$"),New(id: "1", transactionName: "Compra", transactionColor: .green, transactionSymbol: "$"),New(id: "2",transactionName: "assadasda", transactionColor: .green, transactionSymbol: "$"),New(id: "1", transactionName: "Compra", transactionColor: .green, transactionSymbol: "$"),New(id: "2",transactionName: "assadasda", transactionColor: .green, transactionSymbol: "$"),New(id: "1", transactionName: "Compra", transactionColor: .green, transactionSymbol: "$"),New(id: "2",transactionName: "assadasda", transactionColor: .green, transactionSymbol: "$"),New(id: "1", transactionName: "Compra", transactionColor: .green, transactionSymbol: "$"),New(id: "2",transactionName: "assadasda", transactionColor: .green, transactionSymbol: "$"), New(id: "1", transactionName: "Compra", transactionColor: .green, transactionSymbol: "$"),New(id: "2",transactionName: "assadasda", transactionColor: .green, transactionSymbol: "$"),New(id: "1", transactionName: "Compra", transactionColor: .green, transactionSymbol: "$"),New(id: "2",transactionName: "assadasda", transactionColor: .green, transactionSymbol: "$"),New(id: "1", transactionName: "Compra", transactionColor: .green, transactionSymbol: "$"),New(id: "2",transactionName: "assadasda", transactionColor: .green, transactionSymbol: "$"),New(id: "1", transactionName: "Compra", transactionColor: .green, transactionSymbol: "$"),New(id: "2",transactionName: "assadasda", transactionColor: .green, transactionSymbol: "$")]
     
     var moneySymbol: String = "R$"
     var transactionsTitle: String = ""
@@ -81,7 +82,7 @@ struct MonthlyView: View {
                     VStack() {
                         
                         List {
-                            Section(header: Text("Transações de  \(month)")) {
+                            Section(header: Text("Transações de \(month)")) {
                                 ForEach(transactions) { title in
                                     TransactionsCell(title: title.transactionName, value: 10000, transactionSymbol: title.transactionSymbol, transactionColor: title.transactionColor)
                                     
@@ -89,12 +90,19 @@ struct MonthlyView: View {
                                 
                             }
                             
-                        }.listStyle(.automatic)
-                            .bu
+                        }.listStyle(.insetGrouped)
+                            
                         
                     }
+                    VStack() {
+                        BallanceView(savedValue: 1000, month: "\(month)", ballanceValue: 10000)
+                    }
+                    .padding([.leading, .trailing], 15)
+                    .padding(.top, 10)
+
                     
                 }
+                
             }
             .navigationBarTitleDisplayMode(.inline)
             .navigationTitle(month)
@@ -122,6 +130,7 @@ struct MonthlyView: View {
             
             
         }
+        
     }
     
     
@@ -129,6 +138,6 @@ struct MonthlyView: View {
 
 struct MonthlyView_Previews: PreviewProvider {
     static var previews: some View {
-        MonthlyView(incomingValue: 1000000, outgoingValue: 000, balanceValue: 100, savedValue: 10000)
+        MonthlyView(incomingValue: 1000000, outgoingValue: 000, balanceValue: 100, savedValue: 10000, month: "Fevereiro")
     }
 }
