@@ -55,7 +55,7 @@ struct OutgoingTransactionView: View {
                                 .pickerStyle(.automatic)
                                 
                                 
-                                Picker(selection: $selectionTransactionDestination, label: Text("Destino da Transação")) {
+                                Picker(selection: $selectionTransactionDestination, label: Text("Origem da Transação")) {
                                     ForEach(wallets, id: \.self){
                                         Text($0)
                                     }

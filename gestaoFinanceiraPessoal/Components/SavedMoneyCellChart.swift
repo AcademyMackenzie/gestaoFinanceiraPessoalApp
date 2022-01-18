@@ -9,8 +9,8 @@ import SwiftUI
 
 struct SavedMoneyCellChart: View {
     var valueSaved:Double
-    var percentageSaved: Double
-    var totalToSave: Double = 10000
+    var totalToSave: Double
+    var widthTotal: Double = 250
     
     var body: some View {
         
@@ -25,17 +25,17 @@ struct SavedMoneyCellChart: View {
                     .foregroundColor(Color("BlueColor"))
                     .frame(alignment: .trailing)
             }
-            .frame(width: 250, alignment: .center)
+            .frame(width: widthTotal, alignment: .center)
             .padding(.bottom, -5)
             
             ZStack(){
                 Rectangle()
                     .foregroundColor(Color("SavedMoneyChartColor"))
-                    .frame(width: percentageSaved)
+                    .frame(width: (valueSaved*widthTotal)/totalToSave)
                     
                 
             }
-            .frame(width: 250, height: 40, alignment: .leading)
+            .frame(width: widthTotal, height: 40, alignment: .leading)
             .background(Color("SavedMoneyChartBackground"))
             .cornerRadius(5)
             
@@ -49,7 +49,7 @@ struct SavedMoneyCellChart: View {
                     .frame(alignment: .trailing)
                     .foregroundColor(Color("BasicFontColor"))
             }
-            .frame(width: 250, alignment: .center)
+            .frame(width: widthTotal, alignment: .center)
         }
     }
     
@@ -57,7 +57,6 @@ struct SavedMoneyCellChart: View {
 
 struct SavedMoneyCellChart_Previews: PreviewProvider {
     static var previews: some View {
-        SavedMoneyCellChart(valueSaved: 1000, percentageSaved: 10
-        )
+        SavedMoneyCellChart(valueSaved: 100, totalToSave: 1000)
     }
 }

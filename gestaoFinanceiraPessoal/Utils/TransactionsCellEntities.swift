@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct New : Identifiable {
+struct TransactionsCellEntities : Identifiable {
     var id: String
     
     var transactionName: String

@@ -37,6 +37,20 @@ struct NewWalletView: View {
                 
             }
             .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        //action button
+                    }
+                label: {
+                    Text("Criar")
+                        .foregroundColor(.blue)
+                    
+                }
+                .foregroundColor(Color("BasicFontColor"))
+                }
+            }
+
         }
         
     }

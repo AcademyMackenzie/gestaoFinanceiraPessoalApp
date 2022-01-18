@@ -10,8 +10,8 @@ import SwiftUI
 struct SavedMoneyCell: View {
     var title: String
     var moneySymbol: String
-    var value: Double
-    var chartValue: Double
+    var moneyToSave: Double
+    var moneyAlreadySaved: Double
     
     var body: some View {
         //Button
@@ -38,12 +38,12 @@ struct SavedMoneyCell: View {
                 Spacer()
                 
                 HStack(){
-                    SavedMoneyCellChart(valueSaved: 12, percentageSaved: 12, totalToSave: 100)
+                    SavedMoneyCellChart(valueSaved: moneyAlreadySaved, totalToSave: moneyToSave)
                 }
                 .padding(.bottom, 10)
                 
             }
-            .frame(width: 300, height: 140)
+            .frame(width: .infinity, height: 140)
             .background(Color("ElementsBackgroundColor"))
             .cornerRadius(10)
             .shadow(color: Color("ShadowColor"), radius: 0.8, x: 0.5, y: 0.5)
@@ -53,6 +53,6 @@ struct SavedMoneyCell: View {
 
 struct SavedMoneyCell_Previews: PreviewProvider {
     static var previews: some View {
-        SavedMoneyCell(title: "Comprar Iphone novo ", moneySymbol: "R$", value: 1000, chartValue: 1000)
-    }
+        SavedMoneyCell(title: "Comprar Iphone", moneySymbol: "R$", moneyToSave: 1000, moneyAlreadySaved: 500)
+}
 }
