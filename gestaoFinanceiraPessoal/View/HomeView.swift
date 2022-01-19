@@ -10,10 +10,30 @@ import SwiftUI
 
 struct HomeView: View {
     let transactionsArray: [String] = ["Compra", "Salario", "Aluguel"]
-    var transactions: [New] = [New(id: "1", transactionName: "Compra", transactionColor: .green, transactionSymbol: "$"),New(id: "2",transactionName: "assadasda", transactionColor: .green, transactionSymbol: "$"), New(id: "3",transactionName: "aaaaaaa", transactionColor: .green, transactionSymbol: "$"),New(id: "1", transactionName: "Compra", transactionColor: .green, transactionSymbol: "$"),New(id: "2",transactionName: "assadasda", transactionColor: .green, transactionSymbol: "$"),New(id: "1", transactionName: "Compra", transactionColor: .green, transactionSymbol: "$"),New(id: "2",transactionName: "assadasda", transactionColor: .green, transactionSymbol: "$"),New(id: "1", transactionName: "Compra", transactionColor: .green, transactionSymbol: "$"),New(id: "2",transactionName: "assadasda", transactionColor: .green, transactionSymbol: "$"),New(id: "1", transactionName: "Compra", transactionColor: .green, transactionSymbol: "$"),New(id: "2",transactionName: "assadasda", transactionColor: .green, transactionSymbol: "$"),]
+    var transactions: [TransactionsCellEntities] = [
+        TransactionsCellEntities(id: "1", transactionName: "Nome Transação", transactionColor: "RedColor", transactionSymbol: "-", transactionValue: 100.99),
+        TransactionsCellEntities(id: "2", transactionName: "Nome Transação", transactionColor: "GreenColor", transactionSymbol: "+", transactionValue: 1000),
+        TransactionsCellEntities(id: "3", transactionName: "Nome Transação", transactionColor: "RedColor", transactionSymbol: "-", transactionValue: 900),
+        TransactionsCellEntities(id: "4", transactionName: "Nome Transação", transactionColor: "GreenColor", transactionSymbol: "+", transactionValue: 1000),
+        TransactionsCellEntities(id: "5", transactionName: "Nome Transação", transactionColor: "BlueColor", transactionSymbol: "+", transactionValue: 10000.99)]
     
     var moneySymbol: String = "R$"
     var transactionsTitle: String = "Últimas Transações"
+    
+    @State var showSheetNewWallet = false
+    @State var showSheetNewIncoming = false
+    @State var showSheetNewOutgoing = false
+    @State var showSheetSavedMoney = false
+    @State var showSheetMonthlyView = false
+    
+    var savedTotal: Double = 0
+    var incomingTotal: Double = 0
+    var outgoingTotal: Double = 0
+    
+    var alreadySavedTotal: Double = 0
+    var goalToSaveTotal: Double = 0
+    
+    
     
     var body: some View {
         NavigationView {
@@ -22,14 +42,39 @@ struct HomeView: View {
                 Color("ViewBackgroundColor").ignoresSafeArea()
                 VStack() {
                     
-                    
                     VStack() {
+                        
+                        
+                        MonthlyButton(){
+                            self.showSheetMonthlyView.toggle()
+                        }.sheet(isPresented: $showSheetMonthlyView) {
+                            MonthlyView()
+                        }
+                        
                         HStack(){
-                            SavedMoneyButton(title: "Guardado", moneySymbol: moneySymbol, value: 1000, chartValue: 60)
+                            SavedMoneyButton(title: "Guardado", moneySymbol: moneySymbol, valueToSaveTotal: goalToSaveTotal, valueSavedTotal: alreadySavedTotal) {
+                                self.showSheetSavedMoney.toggle()
+                            }.sheet(isPresented: $showSheetSavedMoney)  {
+                                SavedMoneyView()
+                            }
+                            
+                            
                             
                             VStack(){
-                                IncomingButton(title: "Entrada", moneySymbol: moneySymbol, value: 100000)
-                                OutgoingButton(title: "Saída", moneySymbol: moneySymbol, value: 1000)
+                                IncomingButton(title: "Entrada", moneySymbol: moneySymbol, value: incomingTotal) {
+                                    self.showSheetNewIncoming.toggle()
+                                }.sheet(isPresented: $showSheetNewIncoming) {
+                                    IncomingTransactionView()
+                                }
+                                
+                                
+                                OutgoingButton(title: "Saída", moneySymbol: moneySymbol, value: outgoingTotal) {
+                                    self.showSheetNewOutgoing.toggle()
+                                }.sheet(isPresented: $showSheetNewOutgoing) {
+                                    OutgoingTransactionView()
+                                }
+                                
+                                
                             }
                         }
                         
@@ -48,10 +93,10 @@ struct HomeView: View {
                         
                         List {
                             ForEach(transactions) { title in
-                                TransactionsCell(title: title.transactionName, value: 100, transactionSymbol: title.transactionSymbol, transactionColor: title.transactionColor)
-
+                                TransactionsCell(title: title.transactionName, value: title.transactionValue, transactionSymbol: title.transactionSymbol, transactionColorName: title.transactionColor)
+                                
                             }
-                        }
+                        }.listStyle(.automatic)
                     }
                 }
             }
@@ -59,13 +104,15 @@ struct HomeView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        //action button
+                        self.showSheetNewWallet.toggle()
+                    } label: {
+                        Label("Criar", systemImage: "plus.circle.fill")
+                        
                     }
-                label: {
-                    Label("Criar", systemImage: "plus.circle.fill")
-                    
-                }
-                .foregroundColor(Color("BasicFontColor"))
+                    .sheet(isPresented: $showSheetNewWallet) {
+                        NewWalletView()
+                    }
+                    .foregroundColor(Color("BasicFontColor"))
                 }
             }
             

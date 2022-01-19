@@ -8,7 +8,15 @@
 import Foundation
 import SwiftUI
 
-let formatter: NumberFormatter = {
+//let formatter: NumberFormatter = {
+//    let formatter = NumberFormatter()
+//    formatter.numberStyle = .decimal
+//    formatter.locale = Locale(identifier: "pt_BR")
+//    formatter.minimumFractionDigits = 2
+//    return formatter
+//}()
+
+let moneyBRFormatter: NumberFormatter = {
     let formatter = NumberFormatter()
     formatter.numberStyle = .decimal
     formatter.locale = Locale(identifier: "pt_BR")

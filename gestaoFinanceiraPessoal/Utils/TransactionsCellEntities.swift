@@ -8,12 +8,14 @@
 import Foundation
 import SwiftUI
 
-struct New : Identifiable {
+struct TransactionsCellEntities : Identifiable {
     var id: String
     
     var transactionName: String
-    var transactionColor: Color
+    var transactionColor: String
     var transactionSymbol: String
+    var transactionValue: Double
     
     
 }
+//tipo de transação : Entrada (+, verde)soma , saída (-, vermelho)subtrai, guardado(+, azul)subtrai, retirado(+, verde)soma

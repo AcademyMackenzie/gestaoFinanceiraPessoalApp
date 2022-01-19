@@ -16,12 +16,17 @@ struct NewWalletView: View {
     
     
     @State private var selectedItem: SegmentedItens = .account
+   
+    @State private var showingAlert = false
+   
+    // Pedir explição paulinha
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         NavigationView {
             
             ZStack {
-                Color("ViewBackgroundColor").ignoresSafeArea()
+                Color("SheetBackgroundColor").ignoresSafeArea()
                 VStack {
                     
                     Picker("Select the wallet preference", selection: $selectedItem) {
@@ -36,7 +41,40 @@ struct NewWalletView: View {
                 }
                 
             }
+            .navigationBarTitle(Text("Nova Carteira"))
             .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button ("Criar"){
+                        // Lógica BD -----
+                        
+                        dismiss()
+                    }
+                    .foregroundColor(.blue)
+                    
+                
+                .foregroundColor(Color("BasicFontColor"))
+                }
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button ("Cancelar", role: .cancel) {
+                        showingAlert = true
+                        //dismiss()
+                    }.alert("Tem certeza que deseja cancelar?", isPresented: $showingAlert) {
+                        Button("Não") {
+                            
+                        }
+                        Button("Sim") {
+                            dismiss()
+                        }
+                        
+//                        Button(action: {dismiss()}) {
+//                            Text("Cancelar").foregroundColor(.red)
+//                        }
+                    }
+                    .foregroundColor(.red)
+                }
+            }
+
         }
         
     }
@@ -61,8 +99,8 @@ struct SegmentedImage: View {
                 .frame(width: 80, height: 70)
                 .foregroundColor(Color("BasicFontColor"))
             Text(textIten[0])
-            Segmentedform(
-            )
+            Segmentedform()
+            
         case .money:
             Image(systemName: "banknote.fill")
                 .resizable()
@@ -100,9 +138,9 @@ struct Segmentedform: View {
 }
 
 
-struct NewWalletView_Previews: PreviewProvider {
-    static var previews: some View {
-        NewWalletView()
-            .preferredColorScheme(.light)
-    }
-}
+//struct NewWalletView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        NewWalletView()
+//            .preferredColorScheme(.light)
+//    }
+//}

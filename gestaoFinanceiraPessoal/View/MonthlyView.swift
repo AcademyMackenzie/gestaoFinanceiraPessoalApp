@@ -9,10 +9,10 @@ import SwiftUI
 
 
 struct MonthlyView: View {
-    var incomingValue: Double
-    var outgoingValue: Double
-    var balanceValue: Double
-    var savedValue: Double
+    var incomingValue: Double = 1110
+    var outgoingValue: Double = 1110
+    var balanceValue: Double = 0
+    var savedValue: Double = 0
     var month: String = "Janeiro"
     
     
@@ -27,7 +27,15 @@ struct MonthlyView: View {
     }()
     
     
-    var transactions: [New] = [New(id: "1", transactionName: "Compra", transactionColor: .green, transactionSymbol: "$"),New(id: "2",transactionName: "assadasda", transactionColor: .green, transactionSymbol: "$"), New(id: "3",transactionName: "aaaaaaa", transactionColor: .green, transactionSymbol: "$"),New(id: "1", transactionName: "Compra", transactionColor: .green, transactionSymbol: "$"),New(id: "2",transactionName: "assadasda", transactionColor: .green, transactionSymbol: "$"),New(id: "1", transactionName: "Compra", transactionColor: .green, transactionSymbol: "$"),New(id: "2",transactionName: "assadasda", transactionColor: .green, transactionSymbol: "$"),New(id: "1", transactionName: "Compra", transactionColor: .green, transactionSymbol: "$"),New(id: "2",transactionName: "assadasda", transactionColor: .green, transactionSymbol: "$"),New(id: "1", transactionName: "Compra", transactionColor: .green, transactionSymbol: "$"),New(id: "2",transactionName: "assadasda", transactionColor: .green, transactionSymbol: "$"),]
+    
+    var transactions: [TransactionsCellEntities] = [
+        TransactionsCellEntities(id: "1", transactionName: "Nome Transação", transactionColor: "GreenColor", transactionSymbol: "+", transactionValue: 1000),
+        TransactionsCellEntities(id: "2", transactionName: "Nome Transação", transactionColor: "GreenColor", transactionSymbol: "+", transactionValue: 1000),
+        TransactionsCellEntities(id: "3", transactionName: "Nome Transação", transactionColor: "GreenColor", transactionSymbol: "+", transactionValue: 1000),
+        TransactionsCellEntities(id: "4", transactionName: "Nome Transação", transactionColor: "GreenColor", transactionSymbol: "+", transactionValue: 1000),
+        TransactionsCellEntities(id: "5", transactionName: "Nome Transação", transactionColor: "GreenColor", transactionSymbol: "+", transactionValue: 1000),
+        TransactionsCellEntities(id: "6", transactionName: "Nome Transação", transactionColor: "RedColor", transactionSymbol: "+", transactionValue: 1000)
+    ]
     
     var moneySymbol: String = "R$"
     var transactionsTitle: String = ""
@@ -36,7 +44,7 @@ struct MonthlyView: View {
         NavigationView {
             
             ZStack() {
-                Color("ViewBackgroundColor").ignoresSafeArea()
+                Color("SheetBackgroundColor").ignoresSafeArea()
                 VStack() {
                     
                     
@@ -47,25 +55,40 @@ struct MonthlyView: View {
                                 .foregroundColor(Color("BasicFontColor"))
                                 .frame(maxWidth: .infinity,alignment: .leading)
                             
-                            Text(String(incomingValue))
-                                .font(.system(size: 17)).bold()
-                                .foregroundColor(Color("GreenColor"))
-                                .frame(maxWidth: .infinity,alignment: .leading)
+                            HStack() {
+                                Text("R$")
+                                    .font(.system(size: 17)).bold()
+                                    .foregroundColor(Color("GreenColor"))
+                                
+                                
+                                Text(String(incomingValue))
+                                    .font(.system(size: 17)).bold()
+                                    .foregroundColor(Color("GreenColor"))
+                                    .frame(maxWidth: .infinity,alignment: .leading)
+                                
+                            }
+                            
                         }
                         .frame(width: 150, height: 50, alignment: .leading)
                         .padding(.leading,15)
                         
                         VStack() {
-                            Text("Entrada")
+                            Text("Saída")
                                 .font(.system(size: 13))
                                 .foregroundColor(Color("BasicFontColor"))
-                            
                                 .frame(maxWidth: .infinity,alignment: .leading)
                             
-                            Text(String(incomingValue))
-                                .font(.system(size: 17)).bold()
-                                .foregroundColor(Color("RedColor"))
-                                .frame(maxWidth: .infinity,alignment: .leading)
+                            HStack() {
+                                Text("R$")
+                                    .font(.system(size: 17)).bold()
+                                    .foregroundColor(Color("RedColor"))
+                                
+                                
+                                Text(String(incomingValue))
+                                    .font(.system(size: 17)).bold()
+                                    .foregroundColor(Color("RedColor"))
+                                    .frame(maxWidth: .infinity,alignment: .leading)
+                            }
                         }
                         .frame(width: 150, height: 60, alignment: .leading)
                         .padding(.leading,15)
@@ -81,20 +104,27 @@ struct MonthlyView: View {
                     VStack() {
                         
                         List {
-                            Section(header: Text("Transações de  \(month)")) {
+                            Section(header: Text("Transações de \(month)")) {
                                 ForEach(transactions) { title in
-                                    TransactionsCell(title: title.transactionName, value: 10000, transactionSymbol: title.transactionSymbol, transactionColor: title.transactionColor)
+                                    TransactionsCell(title: title.transactionName, value: title.transactionValue, transactionSymbol: title.transactionSymbol, transactionColorName: title.transactionColor)
                                     
                                 }
                                 
                             }
                             
-                        }.listStyle(.automatic)
-                            .bu
+                        }.listStyle(.insetGrouped)
+                        
                         
                     }
+                    VStack() {
+                        BallanceView(savedValue: 1000, month: "\(month)", ballanceValue: 10000)
+                    }
+                    .padding([.leading, .trailing], 15)
+                    .padding(.top, 10)
+                    
                     
                 }
+                
             }
             .navigationBarTitleDisplayMode(.inline)
             .navigationTitle(month)
@@ -122,6 +152,7 @@ struct MonthlyView: View {
             
             
         }
+        
     }
     
     
@@ -129,6 +160,6 @@ struct MonthlyView: View {
 
 struct MonthlyView_Previews: PreviewProvider {
     static var previews: some View {
-        MonthlyView(incomingValue: 1000000, outgoingValue: 000, balanceValue: 100, savedValue: 10000)
+        MonthlyView(incomingValue: 1000000, outgoingValue: 000, balanceValue: 100, savedValue: 10000, month: "Fevereiro")
     }
 }

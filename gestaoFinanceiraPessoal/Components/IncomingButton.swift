@@ -11,12 +11,11 @@ struct IncomingButton: View {
     var title: String
     var moneySymbol: String
     var value: Double
+    var action: () -> Void
     
     var body: some View {
         //Button
-        Button(action:{
-            print("oi")
-        }) {
+        Button(action: action) {
             VStack(){
                 
                 HStack(){
@@ -52,7 +51,7 @@ struct IncomingButton: View {
                 .padding(.bottom, 10)
                 
             }
-            .frame(width: 150, height: 65)
+            .frame(width: 150, height: 70)
             .background(Color("ElementsBackgroundColor"))
             .cornerRadius(10)
             .shadow(color: Color("ShadowColor"), radius: 0.8, x: 0.5, y: 0.5)
@@ -60,8 +59,8 @@ struct IncomingButton: View {
     }
 }
 
-struct IncomingButton_Previews: PreviewProvider {
-    static var previews: some View {
-        IncomingButton(title: "Entrada", moneySymbol: "R$", value: 100000)
-    }
-}
+//struct IncomingButton_Previews: PreviewProvider {
+//    static var previews: some View {
+//        IncomingButton(title: "Entrada", moneySymbol: "R$", value: 100000)
+//    }
+//}
