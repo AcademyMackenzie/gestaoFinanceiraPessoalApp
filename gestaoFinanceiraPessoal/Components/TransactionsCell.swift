@@ -11,7 +11,9 @@ struct TransactionsCell: View {
     var title: String
     var value: Double
     var transactionSymbol: String
-    var transactionColor: Color
+    var moneySymbol: String  = "R$"
+    var transactionColorName: String = "BlueColor"
+    
     
     var body: some View {
         HStack {
@@ -25,12 +27,15 @@ struct TransactionsCell: View {
 
             Spacer()
             
+            Text(String(moneySymbol)).font(.system(size: 17))
+                .foregroundColor(Color(transactionColorName))
+            
             Text(String(value)).font(.system(size: 17))
-                .foregroundColor(transactionColor)
+                .foregroundColor(Color(transactionColorName))
             
             Text(transactionSymbol).bold().font(.system(size: 17)).bold()
                 .padding(.trailing, 15)
-                .foregroundColor(transactionColor)
+                .foregroundColor(Color(transactionColorName))
             
             
         }
@@ -46,6 +51,6 @@ struct TransactionsCell: View {
 
 struct TransactionsCell_Previews: PreviewProvider {
     static var previews: some View {
-        TransactionsCell(title: "Salário", value: 1000000000, transactionSymbol: "+", transactionColor: Color("GreenColor"))
+        TransactionsCell(title: "Salário", value: 1000000000, transactionSymbol: "+", transactionColorName: "RedColor")
     }
 }

@@ -116,10 +116,10 @@ struct OutgoingTransactionView: View {
                         showingAlert = true
                         //dismiss()
                     }.alert("Tem certeza que deseja cancelar?", isPresented: $showingAlert) {
-                        Button("Voltar") {
+                        Button("Não") {
                             
                         }
-                        Button("Cancelar") {
+                        Button("Sim") {
                             dismiss()
                         }
                     }

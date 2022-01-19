@@ -10,7 +10,12 @@ import SwiftUI
 
 struct HomeView: View {
     let transactionsArray: [String] = ["Compra", "Salario", "Aluguel"]
-    var transactions: [TransactionsCellEntities] = [TransactionsCellEntities(id: "1", transactionName: "Compra", transactionColor: .green, transactionSymbol: "$"),TransactionsCellEntities(id: "2",transactionName: "assadasda", transactionColor: .green, transactionSymbol: "$"), TransactionsCellEntities(id: "3",transactionName: "aaaaaaa", transactionColor: .green, transactionSymbol: "$"),TransactionsCellEntities(id: "1", transactionName: "Compra", transactionColor: .green, transactionSymbol: "$"),TransactionsCellEntities(id: "2",transactionName: "assadasda", transactionColor: .green, transactionSymbol: "$"),TransactionsCellEntities(id: "1", transactionName: "Compra", transactionColor: .green, transactionSymbol: "$"),TransactionsCellEntities(id: "2",transactionName: "assadasda", transactionColor: .green, transactionSymbol: "$"),TransactionsCellEntities(id: "1", transactionName: "Compra", transactionColor: .green, transactionSymbol: "$"),TransactionsCellEntities(id: "2",transactionName: "assadasda", transactionColor: .green, transactionSymbol: "$"),TransactionsCellEntities(id: "1", transactionName: "Compra", transactionColor: .green, transactionSymbol: "$"),TransactionsCellEntities(id: "2",transactionName: "assadasda", transactionColor: .green, transactionSymbol: "$"),]
+    var transactions: [TransactionsCellEntities] = [
+        TransactionsCellEntities(id: "1", transactionName: "Nome Transação", transactionColor: "RedColor", transactionSymbol: "-", transactionValue: 100),
+        TransactionsCellEntities(id: "2", transactionName: "Nome Transação", transactionColor: "GreenColor", transactionSymbol: "+", transactionValue: 1000),
+        TransactionsCellEntities(id: "3", transactionName: "Nome Transação", transactionColor: "RedColor", transactionSymbol: "-", transactionValue: 900),
+        TransactionsCellEntities(id: "4", transactionName: "Nome Transação", transactionColor: "GreenColor", transactionSymbol: "+", transactionValue: 1000),
+        TransactionsCellEntities(id: "5", transactionName: "Nome Transação", transactionColor: "BlueColor", transactionSymbol: "+", transactionValue: 100000)]
     
     var moneySymbol: String = "R$"
     var transactionsTitle: String = "Últimas Transações"
@@ -53,7 +58,7 @@ struct HomeView: View {
                                 SavedMoneyView()
                             }
                             
-                           
+                            
                             
                             VStack(){
                                 IncomingButton(title: "Entrada", moneySymbol: moneySymbol, value: incomingTotal) {
@@ -88,7 +93,7 @@ struct HomeView: View {
                         
                         List {
                             ForEach(transactions) { title in
-                                TransactionsCell(title: title.transactionName, value: 100, transactionSymbol: title.transactionSymbol, transactionColor: title.transactionColor)
+                                TransactionsCell(title: title.transactionName, value: title.transactionValue, transactionSymbol: title.transactionSymbol, transactionColorName: title.transactionColor)
                                 
                             }
                         }
@@ -96,20 +101,20 @@ struct HomeView: View {
                 }
             }
             .navigationBarTitleDisplayMode(.inline)
-                        .toolbar {
-                            ToolbarItem(placement: .navigationBarTrailing) {
-                                Button {
-                                    self.showSheetNewWallet.toggle()
-                                } label: {
-                                Label("Criar", systemImage: "plus.circle.fill")
-            
-                                }
-                                .sheet(isPresented: $showSheetNewWallet) {
-                                    NewWalletView()
-                                }
-                            .foregroundColor(Color("BasicFontColor"))
-                            }
-                        }
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        self.showSheetNewWallet.toggle()
+                    } label: {
+                        Label("Criar", systemImage: "plus.circle.fill")
+                        
+                    }
+                    .sheet(isPresented: $showSheetNewWallet) {
+                        NewWalletView()
+                    }
+                    .foregroundColor(Color("BasicFontColor"))
+                }
+            }
             
             
         }

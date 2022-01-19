@@ -28,7 +28,14 @@ struct MonthlyView: View {
     
     
     
-    var transactions: [TransactionsCellEntities] = [TransactionsCellEntities(id: "1", transactionName: "Compra", transactionColor: .green, transactionSymbol: "$"),TransactionsCellEntities(id: "2",transactionName: "assadasda", transactionColor: .green, transactionSymbol: "$"), TransactionsCellEntities(id: "3",transactionName: "aaaaaaa", transactionColor: .green, transactionSymbol: "$"),TransactionsCellEntities(id: "1", transactionName: "Compra", transactionColor: .green, transactionSymbol: "$"),TransactionsCellEntities(id: "2",transactionName: "assadasda", transactionColor: .green, transactionSymbol: "$"),TransactionsCellEntities(id: "1", transactionName: "Compra", transactionColor: .green, transactionSymbol: "$"),TransactionsCellEntities(id: "2",transactionName: "assadasda", transactionColor: .green, transactionSymbol: "$"),TransactionsCellEntities(id: "1", transactionName: "Compra", transactionColor: .green, transactionSymbol: "$"),TransactionsCellEntities(id: "2",transactionName: "assadasda", transactionColor: .green, transactionSymbol: "$"),TransactionsCellEntities(id: "1", transactionName: "Compra", transactionColor: .green, transactionSymbol: "$"),TransactionsCellEntities(id: "2",transactionName: "assadasda", transactionColor: .green, transactionSymbol: "$"), TransactionsCellEntities(id: "1", transactionName: "Compra", transactionColor: .green, transactionSymbol: "$"),TransactionsCellEntities(id: "2",transactionName: "assadasda", transactionColor: .green, transactionSymbol: "$"),TransactionsCellEntities(id: "1", transactionName: "Compra", transactionColor: .green, transactionSymbol: "$"),TransactionsCellEntities(id: "2",transactionName: "assadasda", transactionColor: .green, transactionSymbol: "$"),TransactionsCellEntities(id: "1", transactionName: "Compra", transactionColor: .green, transactionSymbol: "$"),TransactionsCellEntities(id: "2",transactionName: "assadasda", transactionColor: .green, transactionSymbol: "$"),TransactionsCellEntities(id: "1", transactionName: "Compra", transactionColor: .green, transactionSymbol: "$"),TransactionsCellEntities(id: "2",transactionName: "assadasda", transactionColor: .green, transactionSymbol: "$")]
+    var transactions: [TransactionsCellEntities] = [
+        TransactionsCellEntities(id: "1", transactionName: "Nome Transação", transactionColor: "GreenColor", transactionSymbol: "+", transactionValue: 1000),
+        TransactionsCellEntities(id: "2", transactionName: "Nome Transação", transactionColor: "GreenColor", transactionSymbol: "+", transactionValue: 1000),
+        TransactionsCellEntities(id: "3", transactionName: "Nome Transação", transactionColor: "GreenColor", transactionSymbol: "+", transactionValue: 1000),
+        TransactionsCellEntities(id: "4", transactionName: "Nome Transação", transactionColor: "GreenColor", transactionSymbol: "+", transactionValue: 1000),
+        TransactionsCellEntities(id: "5", transactionName: "Nome Transação", transactionColor: "GreenColor", transactionSymbol: "+", transactionValue: 1000),
+        TransactionsCellEntities(id: "6", transactionName: "Nome Transação", transactionColor: "RedColor", transactionSymbol: "+", transactionValue: 1000)
+    ]
     
     var moneySymbol: String = "R$"
     var transactionsTitle: String = ""
@@ -99,7 +106,7 @@ struct MonthlyView: View {
                         List {
                             Section(header: Text("Transações de \(month)")) {
                                 ForEach(transactions) { title in
-                                    TransactionsCell(title: title.transactionName, value: 10000, transactionSymbol: title.transactionSymbol, transactionColor: title.transactionColor)
+                                    TransactionsCell(title: title.transactionName, value: title.transactionValue, transactionSymbol: title.transactionSymbol, transactionColorName: title.transactionColor)
                                     
                                 }
                                 
