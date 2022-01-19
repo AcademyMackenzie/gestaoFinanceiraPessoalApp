@@ -19,22 +19,22 @@ struct TransactionsCell: View {
         HStack {
             Circle()
                 .foregroundColor(Color("ElementsBackgroundColor"))
-                .frame(width: 25, height: 25)
-            Text(title).font(.system(size: 17))
-                .padding(.leading, 15)
+                .frame(width: 20, height: 20)
+            Text(title).font(.system(size: 16))
+                .padding(.leading, 10)
                 .frame(width: 150, height: 30, alignment: .leading)
                 .foregroundColor(Color("BasicFontColor"))
 
             Spacer()
             
-            Text(String(moneySymbol)).font(.system(size: 17))
+            Text(String(moneySymbol)).font(.system(size: 16))
                 .foregroundColor(Color(transactionColorName))
             
-            Text(String(value)).font(.system(size: 17))
+            Text(String(value)).font(.system(size: 16))
                 .foregroundColor(Color(transactionColorName))
             
             Text(transactionSymbol).bold().font(.system(size: 17)).bold()
-                .padding(.trailing, 15)
+                .padding(.trailing, 16)
                 .foregroundColor(Color(transactionColorName))
             
             

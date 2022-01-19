@@ -11,11 +11,11 @@ import SwiftUI
 struct HomeView: View {
     let transactionsArray: [String] = ["Compra", "Salario", "Aluguel"]
     var transactions: [TransactionsCellEntities] = [
-        TransactionsCellEntities(id: "1", transactionName: "Nome Transação", transactionColor: "RedColor", transactionSymbol: "-", transactionValue: 100),
+        TransactionsCellEntities(id: "1", transactionName: "Nome Transação", transactionColor: "RedColor", transactionSymbol: "-", transactionValue: 100.99),
         TransactionsCellEntities(id: "2", transactionName: "Nome Transação", transactionColor: "GreenColor", transactionSymbol: "+", transactionValue: 1000),
         TransactionsCellEntities(id: "3", transactionName: "Nome Transação", transactionColor: "RedColor", transactionSymbol: "-", transactionValue: 900),
         TransactionsCellEntities(id: "4", transactionName: "Nome Transação", transactionColor: "GreenColor", transactionSymbol: "+", transactionValue: 1000),
-        TransactionsCellEntities(id: "5", transactionName: "Nome Transação", transactionColor: "BlueColor", transactionSymbol: "+", transactionValue: 100000)]
+        TransactionsCellEntities(id: "5", transactionName: "Nome Transação", transactionColor: "BlueColor", transactionSymbol: "+", transactionValue: 10000.99)]
     
     var moneySymbol: String = "R$"
     var transactionsTitle: String = "Últimas Transações"
@@ -96,7 +96,7 @@ struct HomeView: View {
                                 TransactionsCell(title: title.transactionName, value: title.transactionValue, transactionSymbol: title.transactionSymbol, transactionColorName: title.transactionColor)
                                 
                             }
-                        }
+                        }.listStyle(.automatic)
                     }
                 }
             }
