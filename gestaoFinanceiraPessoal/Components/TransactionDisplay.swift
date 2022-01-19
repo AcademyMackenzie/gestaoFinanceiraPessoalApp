@@ -32,7 +32,7 @@ struct TransactionDisplay: View {
                 .foregroundColor(Color(transactionColor))
                 .multilineTextAlignment(.trailing)
                 .keyboardType(.decimalPad)
-                
+
             
             Text(transactionSymbol).font(.system(size: 36)).bold()
                 .foregroundColor(Color(transactionColor))

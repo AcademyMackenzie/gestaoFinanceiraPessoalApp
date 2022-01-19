@@ -40,7 +40,7 @@ struct IncomingButton: View {
                         .frame(width: 25, height: 20, alignment: .leading)
                         .foregroundColor(Color("GreenColor"))
                     
-                    
+                    //Text("\(transactionValue, specifier: "%.2f")")
                     Text(String(value)).font(.system(size: 17).bold())
                         .frame(width: 95, height: 20, alignment: .leading)
                         .foregroundColor(Color("GreenColor"))

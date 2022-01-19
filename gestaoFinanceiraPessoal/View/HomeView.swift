@@ -15,6 +15,11 @@ struct HomeView: View {
         TransactionsCellEntities(id: "2", transactionName: "Nome Transação", transactionColor: "GreenColor", transactionSymbol: "+", transactionValue: 1000),
         TransactionsCellEntities(id: "3", transactionName: "Nome Transação", transactionColor: "RedColor", transactionSymbol: "-", transactionValue: 900),
         TransactionsCellEntities(id: "4", transactionName: "Nome Transação", transactionColor: "GreenColor", transactionSymbol: "+", transactionValue: 1000),
+        TransactionsCellEntities(id: "5", transactionName: "Nome Transação", transactionColor: "BlueColor", transactionSymbol: "+", transactionValue: 10000.99),
+        TransactionsCellEntities(id: "1", transactionName: "Nome Transação", transactionColor: "RedColor", transactionSymbol: "-", transactionValue: 100.99),
+        TransactionsCellEntities(id: "2", transactionName: "Nome Transação", transactionColor: "GreenColor", transactionSymbol: "+", transactionValue: 1000),
+        TransactionsCellEntities(id: "3", transactionName: "Nome Transação", transactionColor: "RedColor", transactionSymbol: "-", transactionValue: 900),
+        TransactionsCellEntities(id: "4", transactionName: "Nome Transação", transactionColor: "GreenColor", transactionSymbol: "+", transactionValue: 1000),
         TransactionsCellEntities(id: "5", transactionName: "Nome Transação", transactionColor: "BlueColor", transactionSymbol: "+", transactionValue: 10000.99)]
     
     var moneySymbol: String = "R$"
@@ -78,26 +83,23 @@ struct HomeView: View {
                             }
                         }
                         
+                        Text(transactionsTitle).font(.system(size: 28)).bold()
+                            .foregroundColor(Color("BasicFontColor"))
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding(.leading, 30)
+                            .padding(.top, 20)
                         
-                    }
-                    
-                    VStack() {
-                        HStack() {
-                            Text(transactionsTitle).font(.system(size: 28)).bold()
-                                .foregroundColor(Color("BasicFontColor"))
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .padding(.leading, 30)
-                                .padding(.top, 20)
-                            
-                        }
                         
                         List {
                             ForEach(transactions) { title in
                                 TransactionsCell(title: title.transactionName, value: title.transactionValue, transactionSymbol: title.transactionSymbol, transactionColorName: title.transactionColor)
                                 
                             }
-                        }.listStyle(.automatic)
+                        }.listStyle(.insetGrouped)
+                        
+                        
                     }
+                    
                 }
             }
             .navigationBarTitleDisplayMode(.inline)
