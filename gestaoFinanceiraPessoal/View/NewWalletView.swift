@@ -17,6 +17,8 @@ struct NewWalletView: View {
     
     @State private var selectedItem: SegmentedItens = .account
    
+    @State private var showingAlert = false
+   
     // Pedir explição paulinha
     @Environment(\.dismiss) var dismiss
     
@@ -55,7 +57,19 @@ struct NewWalletView: View {
                 }
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button ("Cancelar", role: .cancel) {
-                        dismiss()
+                        showingAlert = true
+                        //dismiss()
+                    }.alert("Tem certeza que deseja cancelar?", isPresented: $showingAlert) {
+                        Button("Voltar") {
+                            
+                        }
+                        Button("Cancelar") {
+                            dismiss()
+                        }
+                        
+//                        Button(action: {dismiss()}) {
+//                            Text("Cancelar").foregroundColor(.red)
+//                        }
                     }
                     .foregroundColor(.red)
                 }

@@ -50,7 +50,7 @@ struct OutgoingButton: View {
                 .padding(.bottom, 10)
                 
             }
-            .frame(width: 150, height: 65)
+            .frame(width: 150, height: 70)
             .background(Color("ElementsBackgroundColor"))
             .cornerRadius(10)
             .shadow(color: Color("ShadowColor"), radius: 0.8, x: 0.5, y: 0.5)

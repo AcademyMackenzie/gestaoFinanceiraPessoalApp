@@ -19,6 +19,7 @@ struct HomeView: View {
     @State var showSheetNewIncoming = false
     @State var showSheetNewOutgoing = false
     @State var showSheetSavedMoney = false
+    @State var showSheetMonthlyView = false
     
     var savedTotal: Double = 0
     var incomingTotal: Double = 0
@@ -37,6 +38,14 @@ struct HomeView: View {
                 VStack() {
                     
                     VStack() {
+                        
+                        
+                        MonthlyButton(){
+                            self.showSheetMonthlyView.toggle()
+                        }.sheet(isPresented: $showSheetMonthlyView) {
+                            MonthlyView()
+                        }
+                        
                         HStack(){
                             SavedMoneyButton(title: "Guardado", moneySymbol: moneySymbol, valueToSaveTotal: goalToSaveTotal, valueSavedTotal: alreadySavedTotal) {
                                 self.showSheetSavedMoney.toggle()

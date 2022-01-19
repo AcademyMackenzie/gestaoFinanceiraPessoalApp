@@ -37,6 +37,7 @@
 		B0ED6F432795DDE000ADA9E8 /* NewSavedMoneyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ED6F422795DDE000ADA9E8 /* NewSavedMoneyView.swift */; };
 		B0ED6F462795E00700ADA9E8 /* SavedMoneyTransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ED6F452795E00700ADA9E8 /* SavedMoneyTransactionView.swift */; };
 		B0ED6F4827971CB100ADA9E8 /* OnbordingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ED6F4727971CB100ADA9E8 /* OnbordingView.swift */; };
+		B0ED6F4A2798322800ADA9E8 /* MonthlyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ED6F492798322700ADA9E8 /* MonthlyButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,6 +72,7 @@
 		B0ED6F422795DDE000ADA9E8 /* NewSavedMoneyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSavedMoneyView.swift; sourceTree = "<group>"; };
 		B0ED6F452795E00700ADA9E8 /* SavedMoneyTransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedMoneyTransactionView.swift; sourceTree = "<group>"; };
 		B0ED6F4727971CB100ADA9E8 /* OnbordingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnbordingView.swift; sourceTree = "<group>"; };
+		B0ED6F492798322700ADA9E8 /* MonthlyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +141,7 @@
 				B0ED6F382795B52F00ADA9E8 /* SavedMoneyCell.swift */,
 				B0ED6F3A2795B6F600ADA9E8 /* SavedMoneyCellChart.swift */,
 				B0ED6F402795DBC800ADA9E8 /* SavedBallanceView.swift */,
+				B0ED6F492798322700ADA9E8 /* MonthlyButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -252,6 +255,7 @@
 				B00478A8278F17E300BE9D9C /* Persistence.swift in Sources */,
 				B0BB5F922790A0DF00C4066D /* NewWalletView.swift in Sources */,
 				B0ED6F2C279205EF00ADA9E8 /* OutgoingTransactionView.swift in Sources */,
+				B0ED6F4A2798322800ADA9E8 /* MonthlyButton.swift in Sources */,
 				B0BB5F83278FA73F00C4066D /* SavedMoneyButton.swift in Sources */,
 				B0BB5F81278FA2FD00C4066D /* IncomingButton.swift in Sources */,
 				B0BB5F8927905F4700C4066D /* OnBoardingSteps.swift in Sources */,

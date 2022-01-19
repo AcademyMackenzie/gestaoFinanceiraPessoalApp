@@ -9,11 +9,11 @@ import SwiftUI
 
 
 struct MonthlyView: View {
-    var incomingValue: Double
-    var outgoingValue: Double
-    var balanceValue: Double
-    var savedValue: Double
-    var month: String
+    var incomingValue: Double = 1110
+    var outgoingValue: Double = 1110
+    var balanceValue: Double = 0
+    var savedValue: Double = 0
+    var month: String = "Janeiro"
     
     
     let transactionsArray: [String] = ["Compra", "Salario", "Aluguel"]
@@ -37,7 +37,7 @@ struct MonthlyView: View {
         NavigationView {
             
             ZStack() {
-                Color("ViewBackgroundColor").ignoresSafeArea()
+                Color("SheetBackgroundColor").ignoresSafeArea()
                 VStack() {
                     
                     
@@ -48,25 +48,40 @@ struct MonthlyView: View {
                                 .foregroundColor(Color("BasicFontColor"))
                                 .frame(maxWidth: .infinity,alignment: .leading)
                             
-                            Text(String(incomingValue))
-                                .font(.system(size: 17)).bold()
-                                .foregroundColor(Color("GreenColor"))
-                                .frame(maxWidth: .infinity,alignment: .leading)
+                            HStack() {
+                                Text("R$")
+                                    .font(.system(size: 17)).bold()
+                                    .foregroundColor(Color("GreenColor"))
+                                
+                                
+                                Text(String(incomingValue))
+                                    .font(.system(size: 17)).bold()
+                                    .foregroundColor(Color("GreenColor"))
+                                    .frame(maxWidth: .infinity,alignment: .leading)
+                                
+                            }
+                            
                         }
                         .frame(width: 150, height: 50, alignment: .leading)
                         .padding(.leading,15)
                         
                         VStack() {
-                            Text("Entrada")
+                            Text("Saída")
                                 .font(.system(size: 13))
                                 .foregroundColor(Color("BasicFontColor"))
-                            
                                 .frame(maxWidth: .infinity,alignment: .leading)
                             
-                            Text(String(incomingValue))
-                                .font(.system(size: 17)).bold()
-                                .foregroundColor(Color("RedColor"))
-                                .frame(maxWidth: .infinity,alignment: .leading)
+                            HStack() {
+                                Text("R$")
+                                    .font(.system(size: 17)).bold()
+                                    .foregroundColor(Color("RedColor"))
+                                
+                                
+                                Text(String(incomingValue))
+                                    .font(.system(size: 17)).bold()
+                                    .foregroundColor(Color("RedColor"))
+                                    .frame(maxWidth: .infinity,alignment: .leading)
+                            }
                         }
                         .frame(width: 150, height: 60, alignment: .leading)
                         .padding(.leading,15)
@@ -91,7 +106,7 @@ struct MonthlyView: View {
                             }
                             
                         }.listStyle(.insetGrouped)
-                            
+                        
                         
                     }
                     VStack() {
@@ -99,7 +114,7 @@ struct MonthlyView: View {
                     }
                     .padding([.leading, .trailing], 15)
                     .padding(.top, 10)
-
+                    
                     
                 }
                 

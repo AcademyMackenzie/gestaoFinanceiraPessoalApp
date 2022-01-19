@@ -14,6 +14,8 @@ struct NewSavedMoneyView: View {
     @State private var nameInserted: String = ""
     @State var selectionNonePickers: String = "Nenhuma"
     
+    @State var showingAlert = false
+    
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
@@ -42,8 +44,8 @@ struct NewSavedMoneyView: View {
                                     }.foregroundColor(.gray)
                                 }
                                 .pickerStyle(.automatic)
-
-                            
+                                
+                                
                                 
                             }
                         }
@@ -64,21 +66,30 @@ struct NewSavedMoneyView: View {
                         dismiss()
                     }
                     .foregroundColor(.blue)
-             
-                .foregroundColor(Color("BasicFontColor"))
+                    
+                    .foregroundColor(Color("BasicFontColor"))
                 }
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button ("Cancelar") {
-                        dismiss()
+                    Button ("Cancelar", role: .cancel) {
+                        showingAlert = true
+                        //dismiss()
+                    }.alert("Tem certeza que deseja cancelar?",isPresented: $showingAlert){
+                        Button("Voltar") {
+                            
+                        }
+                        Button("Cancelar") {
+                            dismiss()
+                        }
                     }
                     .foregroundColor(.red)
                 }
             }
         }
-        
-        
     }
+    
+    
 }
+
 
 struct NewSavedMoneyView_Previews: PreviewProvider {
     static var previews: some View {

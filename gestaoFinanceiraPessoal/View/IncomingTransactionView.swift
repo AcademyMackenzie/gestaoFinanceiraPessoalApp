@@ -21,6 +21,9 @@ struct IncomingTransactionView: View {
     @State var selectionNonePickers: String = "Nenhuma"
     @State var selectionTransactionDestination: String = "Padrão"
     
+    
+    @State private var showingAlert = false
+    
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
@@ -111,7 +114,15 @@ struct IncomingTransactionView: View {
                 }
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button ("Cancelar", role: .cancel) {
-                        dismiss()
+                        showingAlert = true
+                        //dismiss()
+                    }.alert("Tem certeza que deseja cancelar?",isPresented: $showingAlert){
+                        Button("Voltar") {
+                            
+                        }
+                        Button("Cancelar") {
+                            dismiss()
+                        }
                     }
                     .foregroundColor(.red)
                 }

@@ -13,6 +13,8 @@ struct SavedMoneyTransactionView: View {
     
     var transactionValue: Double = 0
     
+    @State private var showingAlert = false
+    
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
@@ -44,22 +46,31 @@ struct SavedMoneyTransactionView: View {
                     }
                     .foregroundColor(.blue)
                     
-                
-                .foregroundColor(Color("BasicFontColor"))
+                    
+                    .foregroundColor(Color("BasicFontColor"))
                 }
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button ("Cancelar") {
-                        dismiss()
+                    Button ("Cancelar", role: .cancel) {
+                        showingAlert = true
+                        //dismiss()
+                    }.alert("Tem certeza que deseja cancelar?",isPresented: $showingAlert){
+                        Button("Voltar") {
+                            
+                        }
+                        Button("Cancelar") {
+                            dismiss()
+                        }
                     }
                     .foregroundColor(.red)
                 }
             }
-            
         }
         
     }
     
 }
+
+
 
 enum SegmetageItensSavedMoney: String, CaseIterable {
     case save = "Guardar"
@@ -90,7 +101,7 @@ struct SegmentedFormSaveMoney: View {
     @State private var nameInserted = ""
     @State private var descriptionInserted = ""
     @State var transactionDate = Date()
-  
+    
     
     var body: some View {
         Form {

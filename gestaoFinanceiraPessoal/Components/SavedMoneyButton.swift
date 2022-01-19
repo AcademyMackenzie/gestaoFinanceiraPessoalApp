@@ -63,7 +63,7 @@ struct SavedMoneyButton: View {
                 .padding(.bottom, 10)
                 
             }
-            .frame(width: 140, height: 140)
+            .frame(width: 150, height: 150)
             .background(Color("ElementsBackgroundColor"))
             .cornerRadius(10)
             .shadow(color: Color("ShadowColor"), radius: 0.8, x: 0.5, y: 0.5)
