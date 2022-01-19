@@ -38,6 +38,7 @@
 		B0ED6F462795E00700ADA9E8 /* SavedMoneyTransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ED6F452795E00700ADA9E8 /* SavedMoneyTransactionView.swift */; };
 		B0ED6F4827971CB100ADA9E8 /* OnbordingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ED6F4727971CB100ADA9E8 /* OnbordingView.swift */; };
 		B0ED6F4A2798322800ADA9E8 /* MonthlyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ED6F492798322700ADA9E8 /* MonthlyButton.swift */; };
+		B0ED6F52279899E200ADA9E8 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0ED6F51279899E200ADA9E8 /* CloudKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +74,8 @@
 		B0ED6F452795E00700ADA9E8 /* SavedMoneyTransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedMoneyTransactionView.swift; sourceTree = "<group>"; };
 		B0ED6F4727971CB100ADA9E8 /* OnbordingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnbordingView.swift; sourceTree = "<group>"; };
 		B0ED6F492798322700ADA9E8 /* MonthlyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyButton.swift; sourceTree = "<group>"; };
+		B0ED6F4F2798996E00ADA9E8 /* gestaoFinanceiraPessoal.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = gestaoFinanceiraPessoal.entitlements; sourceTree = "<group>"; };
+		B0ED6F51279899E200ADA9E8 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0ED6F52279899E200ADA9E8 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,6 +95,7 @@
 			children = (
 				B004789D278F17E100BE9D9C /* gestaoFinanceiraPessoal */,
 				B004789C278F17E100BE9D9C /* Products */,
+				B0ED6F50279899E200ADA9E8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -105,6 +110,8 @@
 		B004789D278F17E100BE9D9C /* gestaoFinanceiraPessoal */ = {
 			isa = PBXGroup;
 			children = (
+				B0ED6F4F2798996E00ADA9E8 /* gestaoFinanceiraPessoal.entitlements */,
+				B0ED6F532798A3F000ADA9E8 /* Manager */,
 				B0ED6F2F2792097200ADA9E8 /* Utils */,
 				B0BB5F8E2790693C00C4066D /* View */,
 				B0BB5F7B278F8D4400C4066D /* Components */,
@@ -170,6 +177,21 @@
 				B0ED6F3E2795CF1400ADA9E8 /* SavedMoneyCellEntities.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		B0ED6F50279899E200ADA9E8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B0ED6F51279899E200ADA9E8 /* CloudKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B0ED6F532798A3F000ADA9E8 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -398,6 +420,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = gestaoFinanceiraPessoal/gestaoFinanceiraPessoal.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"gestaoFinanceiraPessoal/Preview Content\"";
@@ -427,6 +450,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = gestaoFinanceiraPessoal/gestaoFinanceiraPessoal.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"gestaoFinanceiraPessoal/Preview Content\"";
