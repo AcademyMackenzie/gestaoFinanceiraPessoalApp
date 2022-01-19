@@ -11,11 +11,15 @@ struct SavedMoneyTransactionView: View {
     
     @State private var selectedItem: SegmetageItensSavedMoney = .save
     
+    var transactionValue: Double = 0
+    
+    @Environment(\.dismiss) var dismiss
+    
     var body: some View {
         NavigationView {
             
             ZStack {
-                Color("ViewBackgroundColor").ignoresSafeArea()
+                Color("SheetBackgroundColor").ignoresSafeArea()
                 VStack {
                     
                     Picker("choose save or remove money", selection: $selectedItem) {
@@ -26,22 +30,28 @@ struct SavedMoneyTransactionView: View {
                     .pickerStyle(.segmented)
                     .padding()
                     
-                    SegmentedFormImplementation(selectedIten: selectedItem)
+                    SegmentedFormImplementation(selectedIten: selectedItem, transactionValue: transactionValue)
                 }
                 
             }
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        //action button
+                    Button ("Salvar"){
+                        // logica
+                        
+                        dismiss()
                     }
-                label: {
-                    Text("Salvar")
-                        .foregroundColor(.blue)
+                    .foregroundColor(.blue)
                     
-                }
+                
                 .foregroundColor(Color("BasicFontColor"))
+                }
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button ("Cancelar") {
+                        dismiss()
+                    }
+                    .foregroundColor(.red)
                 }
             }
             
@@ -58,14 +68,15 @@ enum SegmetageItensSavedMoney: String, CaseIterable {
 
 struct SegmentedFormImplementation: View {
     var selectedIten: SegmetageItensSavedMoney
+    var transactionValue: Double = 0
     
     var body: some View {
         switch selectedIten {
         case .save:
-            TransactionDisplay(moneySymbol: "R$", transactionSymbol: "+", transactionColor: "GreenColor", transactionValue: 1000)
+            TransactionDisplay(moneySymbol: "R$", transactionSymbol: "+", transactionColor: "GreenColor", transactionValue: transactionValue)
             SegmentedFormSaveMoney()
         case .outgoing:
-            TransactionDisplay(moneySymbol: "R$", transactionSymbol: "-", transactionColor: "RedColor", transactionValue: 1000)
+            TransactionDisplay(moneySymbol: "R$", transactionSymbol: "-", transactionColor: "RedColor", transactionValue: transactionValue)
             SegmentedFormSaveMoney()
             
         }

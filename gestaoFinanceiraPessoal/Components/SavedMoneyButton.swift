@@ -10,14 +10,17 @@ import SwiftUI
 struct SavedMoneyButton: View {
     var title: String
     var moneySymbol: String
-    var value: Double
-    var chartValue: Double
+
+    
+    var valueToSaveTotal: Double = 0
+    var valueSavedTotal: Double = 0
+    
+    var action: () -> Void
     
     var body: some View {
         //Button
-        Button(action:{
-            print("oi")
-        }) {
+        Button(action: action) {
+            
             VStack(){
                 
                 HStack(){
@@ -43,7 +46,7 @@ struct SavedMoneyButton: View {
                         .foregroundColor(Color("BlueColor"))
                     
                     
-                    Text(String(value)).font(.system(size: 17).bold())
+                    Text(String(valueSavedTotal)).font(.system(size: 17).bold())
                         .frame(width: 95, height: 20, alignment: .leading)
                         .foregroundColor(Color("BlueColor"))
                     
@@ -55,7 +58,7 @@ struct SavedMoneyButton: View {
                 Spacer()
                 
                 HStack(){
-                    SavedChart(valueSaved: 100, percentageSaved: chartValue)
+                    SavedChart(valueSaved: valueSavedTotal, totalToSave: valueToSaveTotal)
                 }
                 .padding(.bottom, 10)
                 
@@ -68,8 +71,8 @@ struct SavedMoneyButton: View {
     }
 }
 
-struct SavedMoneyButton_Previews: PreviewProvider {
-    static var previews: some View {
-        SavedMoneyButton(title: "Guardado", moneySymbol: "R$", value: 100, chartValue: 15)
-    }
-}
+//struct SavedMoneyButton_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SavedMoneyButton(title: "Guardado", moneySymbol: "R$", value: 100, chartValue: 15)
+//    }
+//}

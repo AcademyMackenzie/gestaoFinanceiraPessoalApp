@@ -13,11 +13,11 @@ struct SavedMoneyCell: View {
     var moneyToSave: Double
     var moneyAlreadySaved: Double
     
+    var action: () -> Void
+    
     var body: some View {
         //Button
-        Button(action:{
-            print("oi")
-        }) {
+        Button(action: action) {
             VStack(){
                 
                 HStack(){
@@ -51,8 +51,8 @@ struct SavedMoneyCell: View {
     }
 }
 
-struct SavedMoneyCell_Previews: PreviewProvider {
-    static var previews: some View {
-        SavedMoneyCell(title: "Comprar Iphone", moneySymbol: "R$", moneyToSave: 1000, moneyAlreadySaved: 500)
-}
-}
+//struct SavedMoneyCell_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SavedMoneyCell(title: "Comprar Iphone", moneySymbol: "R$", moneyToSave: 1000, moneyAlreadySaved: 500)
+//}
+//}

@@ -38,7 +38,7 @@ struct TransactionDisplay: View {
                 .padding(.trailing,10)
         }
         .frame(width: 330, height: 80)
-        .background(Color("ElementsBackgroundColor"))
+        .background(Color("DisplayColor"))
         .cornerRadius(10)
     }
 }

@@ -151,8 +151,8 @@
 				B0BB5F912790A0DF00C4066D /* NewWalletView.swift */,
 				B0BB5F952790D9E300C4066D /* IncomingTransactionView.swift */,
 				B0ED6F2B279205EF00ADA9E8 /* OutgoingTransactionView.swift */,
-				B0ED6F2D279208FD00ADA9E8 /* MonthlyView.swift */,
 				B0ED6F3C2795BB6500ADA9E8 /* SavedMoneyView.swift */,
+				B0ED6F2D279208FD00ADA9E8 /* MonthlyView.swift */,
 				B0ED6F422795DDE000ADA9E8 /* NewSavedMoneyView.swift */,
 				B0ED6F452795E00700ADA9E8 /* SavedMoneyTransactionView.swift */,
 			);

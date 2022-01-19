@@ -21,7 +21,7 @@ struct SavedBallenceView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                 Text("R$")
                     .font(.system(size: 15)).bold()
-                    .foregroundColor(Color("BasicFontColor"))
+                    .foregroundColor(Color("SavedMoneyChartColor"))
                 Text(String(goalToSave))
                     .font(.system(size: 15)).bold()
                     .foregroundColor(Color("SavedMoneyChartColor"))
@@ -46,6 +46,7 @@ struct SavedBallenceView: View {
 struct SavedBallenceView_Previews: PreviewProvider {
     static var previews: some View {
         SavedBallenceView(goalToSave: 100000, ballanceSavedMoney: 10000)
+            .preferredColorScheme(.dark)
     }
 }
 

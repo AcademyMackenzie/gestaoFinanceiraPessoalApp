@@ -10,9 +10,10 @@ import SwiftUI
 struct OutgoingTransactionView: View {
     var categories: [String] = ["Nenhuma", "Alimentação", "Compras", "Educação", "Moradia", "Saúde", "Viagens"]
     var frequence: [String] = ["Nenhuma","Diariamente", "Semanalmente", "Mensalmente", "Anualmente"]
-    var wallets: [String] = ["Padrão", "Nu Banck", "Itau", "Santander", "Em casa", "Dollar"]
+    var wallets: [String] = ["Padrão"]
     var date: String = "Data"
     
+    @State var transactionValue: Double = 0
     @State var transactionDate = Date()
     @State private var nameInserted: String = ""
     @State private var descriptionInserted: String = ""
@@ -20,15 +21,16 @@ struct OutgoingTransactionView: View {
     @State var selectionNonePickers: String = "Nenhuma"
     @State var selectionTransactionDestination: String = "Padrão"
     
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         
         
         NavigationView {
             ZStack {
-                Color("ViewBackgroundColor").ignoresSafeArea()
+                Color("SheetBackgroundColor").ignoresSafeArea()
                 VStack {
-                    TransactionDisplay(moneySymbol: "R$", transactionSymbol: "-", transactionColor: "RedColor", transactionValue: 10000)
+                    TransactionDisplay(moneySymbol: "R$", transactionSymbol: "-", transactionColor: "RedColor", transactionValue: transactionValue)
                     
                     
                     
@@ -93,17 +95,25 @@ struct OutgoingTransactionView: View {
                 
             }
             .navigationBarTitleDisplayMode(.inline)
+            .navigationBarTitle(Text("Nova Saída"))
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        //action button
+                    Button ("Salvar"){
+                        
+                        //Lógica -------- BD//
+                        
+                        dismiss()
                     }
-                label: {
-                    Text("Salvar")
-                        .foregroundColor(.blue)
+                    .foregroundColor(.blue)
                     
-                }
+                
                 .foregroundColor(Color("BasicFontColor"))
+                }
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button ("Cancelar", role: .cancel) {
+                        dismiss()
+                    }
+                    .foregroundColor(.red)
                 }
             }
         }
@@ -113,8 +123,8 @@ struct OutgoingTransactionView: View {
     
 }
 
-struct OutgoingTransactionView_Previews: PreviewProvider {
-    static var previews: some View {
-        OutgoingTransactionView()
-    }
-}
+//struct OutgoingTransactionView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        OutgoingTransactionView()
+//    }
+//}

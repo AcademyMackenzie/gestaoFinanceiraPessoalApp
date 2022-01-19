@@ -9,15 +9,25 @@ import SwiftUI
 
 struct SavedChart: View {
     var valueSaved:Double
-    var percentageSaved: Double
+    var totalToSave: Double
+    var widthTotal: Double = 100
     
     var body: some View {
         
         VStack(){
             ZStack(){
-                Rectangle()
-                    .foregroundColor(Color("SavedMoneyChartColor"))
-                    .frame(width: percentageSaved)
+                
+                if totalToSave == 0 {
+                    Rectangle()
+                        .foregroundColor(Color("SavedMoneyChartBackground"))
+                        .frame(width: (valueSaved*widthTotal)/totalToSave)
+                } else {
+                    Rectangle()
+                        .foregroundColor(Color("SavedMoneyChartColor"))
+                        .frame(width: (valueSaved*widthTotal)/totalToSave)
+                    
+                }
+                
                     
                 
             }
@@ -35,7 +45,7 @@ struct SavedChart: View {
                     .frame(alignment: .trailing)
                     .foregroundColor(Color("BasicFontColor"))
             }
-            .frame(width: 100, alignment: .center)
+            .frame(width: widthTotal, alignment: .center)
         }
     }
     
@@ -43,6 +53,6 @@ struct SavedChart: View {
 
 struct SavedChart_Previews: PreviewProvider {
     static var previews: some View {
-        SavedChart(valueSaved: 100, percentageSaved: 10)
+        SavedChart(valueSaved: 100, totalToSave: 1000)
     }
 }
