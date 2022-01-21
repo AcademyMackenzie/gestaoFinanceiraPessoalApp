@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CloudKit
 
 
 struct HomeView: View {
@@ -33,7 +34,7 @@ struct HomeView: View {
     var alreadySavedTotal: Double = 0
     var goalToSaveTotal: Double = 0
     
-    
+    @EnvironmentObject var appData: AppData
     
     var body: some View {
         NavigationView {
@@ -64,14 +65,14 @@ struct HomeView: View {
                                 IncomingButton(title: "Entrada", moneySymbol: moneySymbol, value: incomingTotal) {
                                     self.showSheetNewIncoming.toggle()
                                 }.sheet(isPresented: $showSheetNewIncoming) {
-                                    IncomingTransactionView()
+                                    IncomingTransactionView(wallet: CKRecord.ID(recordName: "Test"))
                                 }
                                 
                                 
                                 OutgoingButton(title: "Saída", moneySymbol: moneySymbol, value: outgoingTotal) {
                                     self.showSheetNewOutgoing.toggle()
                                 }.sheet(isPresented: $showSheetNewOutgoing) {
-                                    OutgoingTransactionView()
+                                    OutgoingTransactionView(wallet: CKRecord.ID(recordName: "Test"))
                                 }
                                 
                                 
@@ -111,6 +112,7 @@ struct HomeView: View {
                     }
                     .sheet(isPresented: $showSheetNewWallet) {
                         NewWalletView()
+                            .environmentObject(self.appData)
                     }
                     .foregroundColor(Color("BasicFontColor"))
                 }

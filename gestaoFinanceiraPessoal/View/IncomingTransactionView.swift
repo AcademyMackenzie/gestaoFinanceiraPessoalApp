@@ -6,21 +6,29 @@
 //
 
 import SwiftUI
+import CloudKit
 
 struct IncomingTransactionView: View {
+    
+    @EnvironmentObject var appData : AppData
+    let wallet: CKRecord.ID
+    
     var categories: [String] = ["Nenhuma", "Alimentação", "Compras", "Educação", "Moradia", "Saúde", "Viagens"]
     var frequence: [String] = ["Nenhuma","Diariamente", "Semanalmente", "Mensalmente", "Anualmente"]
     var wallets: [String] = ["Padrão"]
     var date: String = "Data"
     
-    @State var transactionValue: Double = 0
+    @State var transactionValue: Double = 0 // nao está puxando textfield
     @State var transactionDate = Date()
     @State private var nameInserted: String = ""
     @State private var descriptionInserted: String = ""
     @State var numberOfRepetition: Int = 0
-    @State var selectionNonePickers: String = "Nenhuma"
+    @State var selectionCategoriesPicker: String = "Nenhuma"
+    @State var selectionFrequencePicker: String = "Nenhuma"
     @State var selectionTransactionDestination: String = "Padrão"
     
+    
+    var transactionType: String = "incoming"
     
     @State private var showingAlert = false
     
@@ -33,7 +41,7 @@ struct IncomingTransactionView: View {
             ZStack {
                 Color("SheetBackgroundColor").ignoresSafeArea()
                 VStack {
-                    TransactionDisplay(moneySymbol: "R$", transactionSymbol: "+", transactionColor: "GreenColor", transactionValue: transactionValue)
+                    TransactionDisplay( transactionSymbol: "+", transactionColor: "GreenColor", transactionValue: transactionValue)
                     
                     
                     
@@ -52,7 +60,7 @@ struct IncomingTransactionView: View {
                             }
                             
                             Section() {
-                                Picker(selection: $selectionNonePickers, label: Text("Categoria")) {
+                                Picker(selection: $selectionCategoriesPicker, label: Text("Categoria")) {
                                     ForEach(categories, id: \.self){
                                         Text($0)
                                     }
@@ -69,7 +77,7 @@ struct IncomingTransactionView: View {
                                 
                             }
                             Section() {
-                                Picker(selection: $selectionNonePickers, label: Text("Frequência")) {
+                                Picker(selection: $selectionFrequencePicker, label: Text("Frequência")) {
                                     ForEach(frequence, id: \.self){
                                         Text($0)
                                     }
@@ -103,9 +111,12 @@ struct IncomingTransactionView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button ("Salvar"){
                         
-                        //Lógica -------- BD//
+                        //Lógica
+                        self.appData.insertTransaction(value: transactionValue, name: nameInserted, description: descriptionInserted, date: transactionDate, category: selectionCategoriesPicker, origenDestination: selectionTransactionDestination, frequency: selectionFrequencePicker, repetition: numberOfRepetition, type: transactionType, wallet: self.wallet)
                         
                         dismiss()
+                        
+                        print(self.nameInserted, transactionValue, descriptionInserted, transactionType, transactionDate, selectionCategoriesPicker, selectionTransactionDestination, selectionFrequencePicker, numberOfRepetition)
                     }
                     .foregroundColor(.blue)
                     
