@@ -11,7 +11,7 @@ struct TransactionDisplay: View {
     var moneySymbol: String = "R$"
     var transactionSymbol: String
     var transactionColor: String
-    @State var transactionValue: Double
+    @State var transactionValue: Double = 1000
     
     let formatter: NumberFormatter = {
         let formatter = NumberFormatter()

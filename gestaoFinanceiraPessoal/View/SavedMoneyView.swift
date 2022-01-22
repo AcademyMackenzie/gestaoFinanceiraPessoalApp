@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct SavedMoneyView: View {
-    var saveds: [SavedMoneyCellEntities] = [SavedMoneyCellEntities(id: "1", savedMoneyName: "Comprar iphone", moneyToSave: 10000, moneyAlreadySaved: 5000), SavedMoneyCellEntities(id: "2", savedMoneyName: "Comprar carregador", moneyToSave: 500, moneyAlreadySaved: 250),SavedMoneyCellEntities(id: "1", savedMoneyName: "Comprar iphone", moneyToSave: 10000, moneyAlreadySaved: 5000), SavedMoneyCellEntities(id: "2", savedMoneyName: "Comprar carregador", moneyToSave: 500, moneyAlreadySaved: 250),SavedMoneyCellEntities(id: "1", savedMoneyName: "Comprar iphone", moneyToSave: 10000, moneyAlreadySaved: 5000), SavedMoneyCellEntities(id: "2", savedMoneyName: "Comprar carregador", moneyToSave: 500, moneyAlreadySaved: 250)]
+    
+    @EnvironmentObject var appData : AppData
     
     var goalTotalToSave: Double = 0
     var totalAlreadySaved: Double = 0
@@ -27,11 +28,11 @@ struct SavedMoneyView: View {
                 
                 VStack() {
                     List {
-                        ForEach(saveds) { title in
-                            SavedMoneyCell(title: title.savedMoneyName, moneySymbol: "R$", moneyToSave: title.moneyToSave, moneyAlreadySaved: title.moneyAlreadySaved) {
+                        ForEach(appData.listGoals) { goal in
+                            SavedMoneyCell(title: goal.goalName, moneySymbol: "R$", moneyToSave: goal.goalValue, moneyAlreadySaved: goal.goalSaved) {
                                 self.showSheetSaveMoneyTransaction.toggle()
                             }.sheet(isPresented: $showSheetSaveMoneyTransaction) {
-                                SavedMoneyTransactionView()
+                                SavedMoneyTransactionView(selectedGoal: goal)
                             }
 
                         }

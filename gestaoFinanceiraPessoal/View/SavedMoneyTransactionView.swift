@@ -9,6 +9,9 @@ import SwiftUI
 
 struct SavedMoneyTransactionView: View {
     
+    @EnvironmentObject var appData: AppData
+    let selectedGoal: GoalViewModel
+    
     @State private var selectedItem: SegmetageItensSavedMoney = .save
     
     var transactionValue: Double = 0
@@ -118,8 +121,8 @@ struct SegmentedFormSaveMoney: View {
     
 }
 
-struct SavedMoneyTransactionView_Previews: PreviewProvider {
-    static var previews: some View {
-        SavedMoneyTransactionView()
-    }
-}
+//struct SavedMoneyTransactionView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SavedMoneyTransactionView(selectedGoal: goal)
+//    }
+//}

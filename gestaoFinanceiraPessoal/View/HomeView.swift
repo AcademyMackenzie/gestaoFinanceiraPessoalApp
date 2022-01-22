@@ -10,16 +10,12 @@ import CloudKit
 
 
 struct HomeView: View {
-    let transactionsArray: [String] = ["Compra", "Salario", "Aluguel"]
-    var transactions: [TransactionsCellEntities] = [
-        TransactionsCellEntities(id: "1", transactionName: "Nome Transação", transactionColor: "RedColor", transactionSymbol: "-", transactionValue: 100.99),
-        TransactionsCellEntities(id: "2", transactionName: "Nome Transação", transactionColor: "GreenColor", transactionSymbol: "+", transactionValue: 1000),
-        TransactionsCellEntities(id: "3", transactionName: "Nome Transação", transactionColor: "RedColor", transactionSymbol: "-", transactionValue: 900),
-        TransactionsCellEntities(id: "4", transactionName: "Nome Transação", transactionColor: "GreenColor", transactionSymbol: "+", transactionValue: 1000),
-        TransactionsCellEntities(id: "5", transactionName: "Nome Transação", transactionColor: "BlueColor", transactionSymbol: "+", transactionValue: 10000.99)]
+    var transactions: [TransactionsCellEntities] = []
     
     var moneySymbol: String = "R$"
     var transactionsTitle: String = "Últimas Transações"
+    
+    //let selectedWallet: WalletViewModel
     
     @State var showSheetNewWallet = false
     @State var showSheetNewIncoming = false
@@ -65,14 +61,14 @@ struct HomeView: View {
                                 IncomingButton(title: "Entrada", moneySymbol: moneySymbol, value: incomingTotal) {
                                     self.showSheetNewIncoming.toggle()
                                 }.sheet(isPresented: $showSheetNewIncoming) {
-                                    IncomingTransactionView(wallet: CKRecord.ID(recordName: "Test"))
+                                    IncomingTransactionView(/*wallet: CKRecord.ID(recordName: "Defaut")*/)
                                 }
                                 
                                 
                                 OutgoingButton(title: "Saída", moneySymbol: moneySymbol, value: outgoingTotal) {
                                     self.showSheetNewOutgoing.toggle()
                                 }.sheet(isPresented: $showSheetNewOutgoing) {
-                                    OutgoingTransactionView(wallet: CKRecord.ID(recordName: "Test"))
+                                    OutgoingTransactionView(/*wallet: CKRecord.ID(recordName: "Defaut")*/)
                                 }
                                 
                                 
@@ -93,8 +89,8 @@ struct HomeView: View {
                         }
                         
                         List {
-                            ForEach(transactions) { title in
-                                TransactionsCell(title: title.transactionName, value: title.transactionValue, transactionSymbol: title.transactionSymbol, transactionColorName: title.transactionColor)
+                            ForEach(appData.listTransactions) { transaction in
+                                TransactionsCell(title: transaction.transactionName, value: transaction.transactionValue, transactionSymbol: transaction.transactionType).environmentObject(self.appData)
                                 
                             }
                         }.listStyle(.automatic)
@@ -132,7 +128,7 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView(moneySymbol: "R$", transactionsTitle: "Últimas Transações")
+        HomeView(moneySymbol: "R$", transactionsTitle: "Últimas Transações").environmentObject(AppData())
     }
 }
 
