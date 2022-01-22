@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct TransactionsCell: View {
-    var title: String
-    var value: Double
-    var transactionSymbol: String
+    @State var title: String
+    @State var value: Double
+    @State var transactionSymbol: String
     var moneySymbol: String  = "R$"
-    var transactionColorName: String = "BlueColor"
+    @State var transactionColorName: String = "ColorGreen"
     
     
     var body: some View {
@@ -24,7 +24,7 @@ struct TransactionsCell: View {
                 .padding(.leading, 10)
                 .frame(width: 150, height: 30, alignment: .leading)
                 .foregroundColor(Color("BasicFontColor"))
-
+            
             Spacer()
             
             Text(String(moneySymbol)).font(.system(size: 16))
@@ -44,9 +44,23 @@ struct TransactionsCell: View {
         
     }
     
+    func transactionColor() {
+        if transactionSymbol == "incoming" {
+            transactionColorName = "GreenColor"
+            transactionSymbol = "+"
+            
+        } else if  transactionSymbol == "outgoing" {
+            transactionColorName = "RedColor"
+            transactionSymbol = "-"
+            
+        } else {
+            transactionColorName = "BlueColor"
+            transactionSymbol = "+"
+        }
+        
+    }
+    
 }
-
-
 
 
 struct TransactionsCell_Previews: PreviewProvider {
