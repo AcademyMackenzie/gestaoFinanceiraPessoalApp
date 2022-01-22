@@ -38,6 +38,8 @@
 		B0ED6F462795E00700ADA9E8 /* SavedMoneyTransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ED6F452795E00700ADA9E8 /* SavedMoneyTransactionView.swift */; };
 		B0ED6F4827971CB100ADA9E8 /* OnbordingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ED6F4727971CB100ADA9E8 /* OnbordingView.swift */; };
 		B0ED6F4A2798322800ADA9E8 /* MonthlyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ED6F492798322700ADA9E8 /* MonthlyButton.swift */; };
+		B0ED6F4C2798807C00ADA9E8 /* PieSliceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ED6F4B2798807C00ADA9E8 /* PieSliceView.swift */; };
+		B0ED6F4E2798856E00ADA9E8 /* PieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ED6F4D2798856E00ADA9E8 /* PieChartView.swift */; };
 		B0ED6F52279899E200ADA9E8 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0ED6F51279899E200ADA9E8 /* CloudKit.framework */; };
 		B0ED6F572799C47100ADA9E8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ED6F562799C47100ADA9E8 /* AppDelegate.swift */; };
 		B0ED6F592799C59900ADA9E8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ED6F582799C59900ADA9E8 /* SceneDelegate.swift */; };
@@ -77,6 +79,8 @@
 		B0ED6F452795E00700ADA9E8 /* SavedMoneyTransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedMoneyTransactionView.swift; sourceTree = "<group>"; };
 		B0ED6F4727971CB100ADA9E8 /* OnbordingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnbordingView.swift; sourceTree = "<group>"; };
 		B0ED6F492798322700ADA9E8 /* MonthlyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyButton.swift; sourceTree = "<group>"; };
+		B0ED6F4B2798807C00ADA9E8 /* PieSliceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieSliceView.swift; sourceTree = "<group>"; };
+		B0ED6F4D2798856E00ADA9E8 /* PieChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartView.swift; sourceTree = "<group>"; };
 		B0ED6F4F2798996E00ADA9E8 /* gestaoFinanceiraPessoal.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = gestaoFinanceiraPessoal.entitlements; sourceTree = "<group>"; };
 		B0ED6F51279899E200ADA9E8 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		B0ED6F562799C47100ADA9E8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -157,6 +161,8 @@
 				B0ED6F3A2795B6F600ADA9E8 /* SavedMoneyCellChart.swift */,
 				B0ED6F402795DBC800ADA9E8 /* SavedBallanceView.swift */,
 				B0ED6F492798322700ADA9E8 /* MonthlyButton.swift */,
+				B0ED6F4B2798807C00ADA9E8 /* PieSliceView.swift */,
+				B0ED6F4D2798856E00ADA9E8 /* PieChartView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -286,6 +292,7 @@
 				B0ED6F392795B52F00ADA9E8 /* SavedMoneyCell.swift in Sources */,
 				B0BB5F852790453B00C4066D /* SavedChart.swift in Sources */,
 				B00478A8278F17E300BE9D9C /* Persistence.swift in Sources */,
+				B0ED6F4E2798856E00ADA9E8 /* PieChartView.swift in Sources */,
 				B0BB5F922790A0DF00C4066D /* NewWalletView.swift in Sources */,
 				B0ED6F2C279205EF00ADA9E8 /* OutgoingTransactionView.swift in Sources */,
 				B0ED6F4A2798322800ADA9E8 /* MonthlyButton.swift in Sources */,
@@ -295,6 +302,7 @@
 				B0ED6F412795DBC800ADA9E8 /* SavedBallanceView.swift in Sources */,
 				B0ED6F3F2795CF1400ADA9E8 /* SavedMoneyCellEntities.swift in Sources */,
 				B00478A1278F17E100BE9D9C /* ContentView.swift in Sources */,
+				B0ED6F4C2798807C00ADA9E8 /* PieSliceView.swift in Sources */,
 				B0ED6F3B2795B6F600ADA9E8 /* SavedMoneyCellChart.swift in Sources */,
 				B0ED6F572799C47100ADA9E8 /* AppDelegate.swift in Sources */,
 				B0ED6F592799C59900ADA9E8 /* SceneDelegate.swift in Sources */,

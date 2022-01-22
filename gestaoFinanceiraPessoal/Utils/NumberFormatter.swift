@@ -23,3 +23,5 @@ let moneyBRFormatter: NumberFormatter = {
     formatter.minimumFractionDigits = 2
     return formatter
 }()
+
+

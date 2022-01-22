@@ -15,7 +15,8 @@ struct MonthlyButton: View {
         Button(action: action) {
             VStack {
                 
-                Text("Messsssssss")
+                PieChartView(values: [10, 12, 14, 40], colors: [Color("BlueColor"), Color("GreenColor"), Color("RedColor"), .orange])
+                    .frame(width: 160, height: 160, alignment: .center)
             }
             .frame(width: 310, height: 200)
             .background(Color("ElementsBackgroundColor"))

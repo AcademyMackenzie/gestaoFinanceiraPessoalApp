@@ -10,6 +10,7 @@ import CloudKit
 
 
 struct HomeView: View {
+
     var transactions: [TransactionsCellEntities] = []
     
     var moneySymbol: String = "R$"
@@ -75,26 +76,23 @@ struct HomeView: View {
                             }
                         }
                         
+                        Text(transactionsTitle).font(.system(size: 28)).bold()
+                            .foregroundColor(Color("BasicFontColor"))
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding(.leading, 30)
+                            .padding(.top, 20)
                         
-                    }
-                    
-                    VStack() {
-                        HStack() {
-                            Text(transactionsTitle).font(.system(size: 28)).bold()
-                                .foregroundColor(Color("BasicFontColor"))
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .padding(.leading, 30)
-                                .padding(.top, 20)
-                            
-                        }
                         
                         List {
                             ForEach(appData.listTransactions) { transaction in
                                 TransactionsCell(title: transaction.transactionName, value: transaction.transactionValue, transactionSymbol: transaction.transactionType).environmentObject(self.appData)
                                 
                             }
-                        }.listStyle(.automatic)
+                        }.listStyle(.insetGrouped)
+                        
+                        
                     }
+                    
                 }
             }
             .navigationBarTitleDisplayMode(.inline)
