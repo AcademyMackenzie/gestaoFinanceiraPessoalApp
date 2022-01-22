@@ -6,20 +6,28 @@
 //
 
 import SwiftUI
+import CloudKit
 
 struct OutgoingTransactionView: View {
+    
+    @EnvironmentObject var appData : AppData
+    
     var categories: [String] = ["Nenhuma", "Alimentação", "Compras", "Educação", "Moradia", "Saúde", "Viagens"]
     var frequence: [String] = ["Nenhuma","Diariamente", "Semanalmente", "Mensalmente", "Anualmente"]
     var wallets: [String] = ["Padrão"]
     var date: String = "Data"
     
-    @State var transactionValue: Double = 0
-    @State var transactionDate = Date()
+    @State private var transactionValue: Double = 0
+    @State private var transactionDate = Date()
     @State private var nameInserted: String = ""
     @State private var descriptionInserted: String = ""
-    @State var numberOfRepetition: Int = 0
-    @State var selectionNonePickers: String = "Nenhuma"
-    @State var selectionTransactionDestination: String = "Padrão"
+    @State private var numberOfRepetition: Int = 0
+    @State private var selectionCategoriesPicker: String = "Nenhuma"
+    @State private var selectionFrequencePicker: String = "Nenhuma"
+    @State private var selectionTransactionOrigin: String = "Padrão"
+    @State private var transactionType: String = "outgoing"
+    
+    //let wallet: CKRecord.ID
     
     @State private var showingAlert = false
     
@@ -32,7 +40,9 @@ struct OutgoingTransactionView: View {
             ZStack {
                 Color("SheetBackgroundColor").ignoresSafeArea()
                 VStack {
-                    TransactionDisplay(moneySymbol: "R$", transactionSymbol: "-", transactionColor: "RedColor", transactionValue: transactionValue)
+                    
+                    //FIXME:  nao está puxando textfield
+                    TransactionDisplay(transactionSymbol: "-", transactionColor: "RedColor", transactionValue: transactionValue)
                     
                     
                     
@@ -51,7 +61,7 @@ struct OutgoingTransactionView: View {
                             }
                             
                             Section() {
-                                Picker(selection: $selectionNonePickers, label: Text("Categoria")) {
+                                Picker(selection: $selectionCategoriesPicker, label: Text("Categoria")) {
                                     ForEach(categories, id: \.self){
                                         Text($0)
                                     }
@@ -59,7 +69,7 @@ struct OutgoingTransactionView: View {
                                 .pickerStyle(.automatic)
                                 
                                 
-                                Picker(selection: $selectionTransactionDestination, label: Text("Origem da Transação")) {
+                                Picker(selection: $selectionTransactionOrigin, label: Text("Origem da Transação")) {
                                     ForEach(wallets, id: \.self){
                                         Text($0)
                                     }
@@ -68,7 +78,7 @@ struct OutgoingTransactionView: View {
                                 
                             }
                             Section() {
-                                Picker(selection: $selectionNonePickers, label: Text("Frequência")) {
+                                Picker(selection: $selectionFrequencePicker, label: Text("Frequência")) {
                                     ForEach(frequence, id: \.self){
                                         Text($0)
                                     }
@@ -103,8 +113,11 @@ struct OutgoingTransactionView: View {
                     Button ("Salvar"){
                         
                         //Lógica -------- BD//
-                        
+                        self.appData.insertTransaction(value: transactionValue, name: nameInserted, description: descriptionInserted, date: transactionDate, category: selectionCategoriesPicker, origenDestination: selectionTransactionOrigin, frequency: selectionFrequencePicker, repetition: numberOfRepetition, type: transactionType //, wallet: self.wallet)
+                        )
                         dismiss()
+                        
+                        print(self.nameInserted, transactionValue, descriptionInserted, transactionType, transactionDate, selectionCategoriesPicker, selectionTransactionOrigin, selectionFrequencePicker, numberOfRepetition)
                     }
                     .foregroundColor(.blue)
                     

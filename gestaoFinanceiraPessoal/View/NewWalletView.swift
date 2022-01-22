@@ -9,6 +9,8 @@ import SwiftUI
 
 
 struct NewWalletView: View {
+    @EnvironmentObject var appData: AppData
+    
     
     //    init() {
     //        UISegmentedControl.appearance().selectedSegmentTintColor = .blue
@@ -18,6 +20,10 @@ struct NewWalletView: View {
     @State private var selectedItem: SegmentedItens = .account
    
     @State private var showingAlert = false
+    
+    @State private var walletName: String = ""
+    @State private var walletDescription: String = ""
+    @State private var walletType: String = ""
    
     // Pedir explição paulinha
     @Environment(\.dismiss) var dismiss
@@ -37,7 +43,14 @@ struct NewWalletView: View {
                     .pickerStyle(.segmented)
                     .padding()
                     
-                    SegmentedImage(selectedIten: selectedItem)
+                    SegmentedImage(selectedIten: selectedItem, name: walletName, description: walletDescription)
+                    
+                    Form {
+                        Section() {
+                            TextField("Nome", text: $walletName)
+                            TextField("Descrição", text: $walletDescription)
+                        }
+                    }
                 }
                 
             }
@@ -47,6 +60,13 @@ struct NewWalletView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button ("Criar"){
                         // Lógica BD -----
+                        
+                        let text = self.walletName.trimmingCharacters(in: .whitespaces)
+                        if !text.isEmpty {
+                            self.appData.insertWallet(name: walletName, description: walletDescription, type: "\(selectedItem)", value: 0)
+                            print(self.walletName, self.walletDescription, self.selectedItem)
+                        }
+                         
                         
                         dismiss()
                     }
@@ -67,9 +87,6 @@ struct NewWalletView: View {
                             dismiss()
                         }
                         
-//                        Button(action: {dismiss()}) {
-//                            Text("Cancelar").foregroundColor(.red)
-//                        }
                     }
                     .foregroundColor(.red)
                 }
@@ -90,6 +107,8 @@ enum SegmentedItens: String, CaseIterable {
 struct SegmentedImage: View {
     var selectedIten: SegmentedItens
     var textIten: [String] = ["Adicione uma nova Conta","Adicione um novo Dinheiro em Espécie","Adicione um novo Cartão"]
+    var name: String = ""
+    var description: String = ""
     
     var body: some View {
         switch selectedIten {
@@ -99,7 +118,7 @@ struct SegmentedImage: View {
                 .frame(width: 80, height: 70)
                 .foregroundColor(Color("BasicFontColor"))
             Text(textIten[0])
-            Segmentedform()
+            
             
         case .money:
             Image(systemName: "banknote.fill")
@@ -107,7 +126,7 @@ struct SegmentedImage: View {
                 .frame(width: 100, height: 70)
                 .foregroundColor(Color("BasicFontColor"))
             Text(textIten[1])
-            Segmentedform()
+            
             
         case .card:
             Image(systemName: "creditcard.fill")
@@ -115,27 +134,11 @@ struct SegmentedImage: View {
                 .frame(width: 90, height: 70)
                 .foregroundColor(Color("BasicFontColor"))
             Text(textIten[2])
-            Segmentedform()
+            
         }
     }
 }
 
-struct Segmentedform: View {
-    var name: String = "Nome"
-    var description: String = "Descrição"
-    
-    @State private var nameInserted = ""
-    @State private var descriptionInserted = ""
-    
-    var body: some View {
-        Form {
-            Section() {
-                TextField(name, text: $nameInserted)
-                TextField(description, text: $descriptionInserted)
-            }
-        }
-    }
-}
 
 
 //struct NewWalletView_Previews: PreviewProvider {

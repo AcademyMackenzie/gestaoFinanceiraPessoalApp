@@ -38,6 +38,10 @@
 		B0ED6F462795E00700ADA9E8 /* SavedMoneyTransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ED6F452795E00700ADA9E8 /* SavedMoneyTransactionView.swift */; };
 		B0ED6F4827971CB100ADA9E8 /* OnbordingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ED6F4727971CB100ADA9E8 /* OnbordingView.swift */; };
 		B0ED6F4A2798322800ADA9E8 /* MonthlyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ED6F492798322700ADA9E8 /* MonthlyButton.swift */; };
+		B0ED6F52279899E200ADA9E8 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0ED6F51279899E200ADA9E8 /* CloudKit.framework */; };
+		B0ED6F572799C47100ADA9E8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ED6F562799C47100ADA9E8 /* AppDelegate.swift */; };
+		B0ED6F592799C59900ADA9E8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ED6F582799C59900ADA9E8 /* SceneDelegate.swift */; };
+		B0ED6F5C2799EB4C00ADA9E8 /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ED6F5B2799EB4C00ADA9E8 /* AppData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +77,12 @@
 		B0ED6F452795E00700ADA9E8 /* SavedMoneyTransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedMoneyTransactionView.swift; sourceTree = "<group>"; };
 		B0ED6F4727971CB100ADA9E8 /* OnbordingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnbordingView.swift; sourceTree = "<group>"; };
 		B0ED6F492798322700ADA9E8 /* MonthlyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyButton.swift; sourceTree = "<group>"; };
+		B0ED6F4F2798996E00ADA9E8 /* gestaoFinanceiraPessoal.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = gestaoFinanceiraPessoal.entitlements; sourceTree = "<group>"; };
+		B0ED6F51279899E200ADA9E8 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		B0ED6F562799C47100ADA9E8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B0ED6F582799C59900ADA9E8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		B0ED6F5A2799E9C300ADA9E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		B0ED6F5B2799EB4C00ADA9E8 /* AppData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0ED6F52279899E200ADA9E8 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,6 +102,7 @@
 			children = (
 				B004789D278F17E100BE9D9C /* gestaoFinanceiraPessoal */,
 				B004789C278F17E100BE9D9C /* Products */,
+				B0ED6F50279899E200ADA9E8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -105,6 +117,9 @@
 		B004789D278F17E100BE9D9C /* gestaoFinanceiraPessoal */ = {
 			isa = PBXGroup;
 			children = (
+				B0ED6F5A2799E9C300ADA9E8 /* Info.plist */,
+				B0ED6F4F2798996E00ADA9E8 /* gestaoFinanceiraPessoal.entitlements */,
+				B0ED6F532798A3F000ADA9E8 /* Manager */,
 				B0ED6F2F2792097200ADA9E8 /* Utils */,
 				B0BB5F8E2790693C00C4066D /* View */,
 				B0BB5F7B278F8D4400C4066D /* Components */,
@@ -170,6 +185,24 @@
 				B0ED6F3E2795CF1400ADA9E8 /* SavedMoneyCellEntities.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		B0ED6F50279899E200ADA9E8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B0ED6F51279899E200ADA9E8 /* CloudKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B0ED6F532798A3F000ADA9E8 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				B0ED6F582799C59900ADA9E8 /* SceneDelegate.swift */,
+				B0ED6F562799C47100ADA9E8 /* AppDelegate.swift */,
+				B0ED6F5B2799EB4C00ADA9E8 /* AppData.swift */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,8 +296,11 @@
 				B0ED6F3F2795CF1400ADA9E8 /* SavedMoneyCellEntities.swift in Sources */,
 				B00478A1278F17E100BE9D9C /* ContentView.swift in Sources */,
 				B0ED6F3B2795B6F600ADA9E8 /* SavedMoneyCellChart.swift in Sources */,
+				B0ED6F572799C47100ADA9E8 /* AppDelegate.swift in Sources */,
+				B0ED6F592799C59900ADA9E8 /* SceneDelegate.swift in Sources */,
 				B0BB5F8D279068F200C4066D /* HomeView.swift in Sources */,
 				B0BB5F7F278FA0EA00C4066D /* OutgoingButton.swift in Sources */,
+				B0ED6F5C2799EB4C00ADA9E8 /* AppData.swift in Sources */,
 				B0BB5F942790D39400C4066D /* TransactionDisplay.swift in Sources */,
 				B00478AB278F17E300BE9D9C /* gestaoFinanceiraPessoal.xcdatamodeld in Sources */,
 				B004789F278F17E100BE9D9C /* gestaoFinanceiraPessoalApp.swift in Sources */,
@@ -316,7 +352,7 @@
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_NO_COMMON_BLOCKS = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -376,7 +412,7 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_NO_COMMON_BLOCKS = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -398,12 +434,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = gestaoFinanceiraPessoal/gestaoFinanceiraPessoal.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"gestaoFinanceiraPessoal/Preview Content\"";
 				DEVELOPMENT_TEAM = 9R89XP5A63;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = gestaoFinanceiraPessoal/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -427,12 +465,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = gestaoFinanceiraPessoal/gestaoFinanceiraPessoal.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"gestaoFinanceiraPessoal/Preview Content\"";
 				DEVELOPMENT_TEAM = 9R89XP5A63;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = gestaoFinanceiraPessoal/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

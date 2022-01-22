@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct TransactionDisplay: View {
-    var moneySymbol: String
+    var moneySymbol: String = "R$"
     var transactionSymbol: String
     var transactionColor: String
-    @State var transactionValue: Double
+    @State var transactionValue: Double = 1000
     
     let formatter: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -43,9 +43,9 @@ struct TransactionDisplay: View {
         .cornerRadius(10)
     }
 }
-
-struct TransactionDisplay_Previews: PreviewProvider {
-    static var previews: some View {
-        TransactionDisplay(moneySymbol: "R$", transactionSymbol: "+",transactionColor: "GreenColor", transactionValue: 1100)
-    }
-}
+//
+//struct TransactionDisplay_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TransactionDisplay(moneySymbol: "R$", transactionSymbol: "+",transactionColor: "GreenColor", transactionValue: 1100)
+//    }
+//}

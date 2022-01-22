@@ -8,16 +8,12 @@
 import SwiftUI
 
 struct NewSavedMoneyView: View {
-    
-    @EnvironmentObject var appData: AppData
-    
     var categories: [String] = ["Nenhuma", "Alimentação", "Compras", "Educação", "Moradia", "Saúde", "Viagens"]
     var wantToSave: Double = 0
     
     @State private var nameInserted: String = ""
-    @State var selectionCategoryPicker: String = "Nenhuma"
+    @State var selectionNonePickers: String = "Nenhuma"
     
-   
     @State var showingAlert = false
     
     @Environment(\.dismiss) var dismiss
@@ -42,7 +38,7 @@ struct NewSavedMoneyView: View {
                             }
                             
                             Section() {
-                                Picker(selection: $selectionCategoryPicker, label: Text("Categoria").foregroundColor(Color("BasicFontColor"))) {
+                                Picker(selection: $selectionNonePickers, label: Text("Categoria").foregroundColor(Color("BasicFontColor"))) {
                                     ForEach(categories, id: \.self){
                                         Text($0)
                                     }.foregroundColor(.gray)
@@ -66,10 +62,7 @@ struct NewSavedMoneyView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button ("Salvar"){
-                        
-                        //Lógica
-                        self.appData.insertGoals(name: self.nameInserted, value: self.wantToSave, category: self.selectionCategoryPicker, savedMoney: 0)
-                        
+                        //Lágica BD ---
                         dismiss()
                     }
                     .foregroundColor(.blue)
