@@ -12,7 +12,7 @@ struct NewSavedMoneyView: View {
     @EnvironmentObject var appData: AppData
     
     var categories: [String] = ["Nenhuma", "Alimentação", "Compras", "Educação", "Moradia", "Saúde", "Viagens"]
-    var wantToSave: Double = 0
+    @State private var wantToSave: Double = 0
     
     @State private var nameInserted: String = ""
     @State var selectionCategoryPicker: String = "Nenhuma"
@@ -22,14 +22,41 @@ struct NewSavedMoneyView: View {
     
     @Environment(\.dismiss) var dismiss
     
+    
+    let formatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.locale = Locale(identifier: "pt_BR")
+        formatter.minimumFractionDigits = 2
+        return formatter
+    }()
+    
     var body: some View {
         
         NavigationView {
             ZStack {
                 Color("SheetBackgroundColor").ignoresSafeArea()
                 VStack {
-                    TransactionDisplay(moneySymbol: "R$", transactionSymbol: "", transactionColor: "BlueColor", transactionValue: wantToSave)
                     
+                    HStack {
+                        Text("R$").font(.system(size: 36)).bold()
+                            .foregroundColor(Color("BlueColor"))
+                            .padding(.leading,10)
+                        
+                        TextField("",value: $wantToSave, formatter: formatter)
+                            .font(.system(size: 36, weight: .bold))
+                            .foregroundColor(Color("BlueColor"))
+                            .multilineTextAlignment(.trailing)
+                            .keyboardType(.decimalPad)
+                            
+                        
+                        Text("+").font(.system(size: 36)).bold()
+                            .foregroundColor(Color("BlueColor"))
+                            .padding(.trailing,10)
+                    }
+                    .frame(width: 330, height: 80)
+                    .background(Color("DisplayColor"))
+                    .cornerRadius(10)
                     
                     
                     VStack(){
@@ -37,7 +64,7 @@ struct NewSavedMoneyView: View {
                         Form {
                             Section() {
                                 
-                                TextField("Nome", text: $nameInserted)
+                                TextField("Nome", text: $nameInserted).foregroundColor(Color("BasicFontColor"))
                                 
                             }
                             

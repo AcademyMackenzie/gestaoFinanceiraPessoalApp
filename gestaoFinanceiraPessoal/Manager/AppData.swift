@@ -291,7 +291,7 @@ class AppData: ObservableObject {
                         let newItem = TransactionViewModel(id: record.recordID, transaction: newTransaction)
                         self.listTransactions.append(newItem)
                     }
-                    self.listTransactions.sort(by: { $0.transactionName < $1.transactionName})
+                    self.listTransactions.sort(by: { $0.transactionDate > $1.transactionDate})
                 }
             } else {
                 print("Error: records not found \(error!)")

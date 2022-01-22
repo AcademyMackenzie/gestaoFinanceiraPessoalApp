@@ -10,6 +10,8 @@ import CloudKit
 
 
 struct HomeView: View {
+    
+    @EnvironmentObject var appData: AppData
 
     var transactions: [TransactionsCellEntities] = []
     
@@ -31,7 +33,6 @@ struct HomeView: View {
     var alreadySavedTotal: Double = 0
     var goalToSaveTotal: Double = 0
     
-    @EnvironmentObject var appData: AppData
     
     var body: some View {
         NavigationView {
@@ -62,14 +63,14 @@ struct HomeView: View {
                                 IncomingButton(title: "Entrada", moneySymbol: moneySymbol, value: incomingTotal) {
                                     self.showSheetNewIncoming.toggle()
                                 }.sheet(isPresented: $showSheetNewIncoming) {
-                                    IncomingTransactionView(/*wallet: CKRecord.ID(recordName: "Defaut")*/)
+                                    IncomingTransactionView()
                                 }
                                 
                                 
                                 OutgoingButton(title: "Saída", moneySymbol: moneySymbol, value: outgoingTotal) {
                                     self.showSheetNewOutgoing.toggle()
                                 }.sheet(isPresented: $showSheetNewOutgoing) {
-                                    OutgoingTransactionView(/*wallet: CKRecord.ID(recordName: "Defaut")*/)
+                                    OutgoingTransactionView()
                                 }
                                 
                                 

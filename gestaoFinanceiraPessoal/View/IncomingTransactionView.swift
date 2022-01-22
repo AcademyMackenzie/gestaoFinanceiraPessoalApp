@@ -52,12 +52,6 @@ struct IncomingTransactionView: View {
             ZStack {
                 Color("SheetBackgroundColor").ignoresSafeArea()
                 VStack {
-                    
-                    //FIXME:  nao está puxando textfield
-//                    TransactionDisplay( transactionSymbol: "+", transactionColor: "GreenColor", transactionValue: transactionValue)
-                    
-                    
-                    
                   
                     HStack {
                         Text("R$").font(.system(size: 36)).bold()
@@ -188,9 +182,9 @@ struct IncomingTransactionView: View {
     
 }
 
-
+//
 //struct IncomingTransactionView_Previews: PreviewProvider {
 //    static var previews: some View {
-//        IncomingTransactionView(, showSheetView: true)
+//        IncomingTransactionView( transactionValue: 100)
 //    }
 //}

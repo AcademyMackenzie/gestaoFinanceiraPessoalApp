@@ -39,7 +39,21 @@ struct SavedMoneyView: View {
                         .listRowBackground(Color("SheetBackgroundColor"))
                         .listRowSeparator(.hidden)
                         
+                        .swipeActions(edge: .trailing) {
+                            Button {
+                                //Func delete cloudkit
+                                
+                            } label: {
+                                Label("Apagar", systemImage: "trash")
+                            }
+                            
+                            .tint(.red)
+                        }
+                        
                     }
+//                    .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+//                        func deleteRecord(withID recordID: CKReecord.ID) async throws -> CKRecord.ID
+//                    }
                     
 
                     SavedBallenceView(goalToSave: goalTotalToSave, ballanceSavedMoney: totalAlreadySaved)

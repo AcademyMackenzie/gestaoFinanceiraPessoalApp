@@ -9,14 +9,15 @@ import SwiftUI
 
 
 struct MonthlyView: View {
-    var incomingValue: Double = 1110
-    var outgoingValue: Double = 1110
+    
+    @EnvironmentObject var appData: AppData
+    
+    var incomingValue: Double = 0
+    var outgoingValue: Double = 0
     var balanceValue: Double = 0
     var savedValue: Double = 0
     var month: String = "Janeiro"
     
-    
-    let transactionsArray: [String] = ["Compra", "Salario", "Aluguel"]
     
     let formatter: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -28,14 +29,7 @@ struct MonthlyView: View {
     
     
     
-    var transactions: [TransactionsCellEntities] = [
-        TransactionsCellEntities(id: "1", transactionName: "Nome Transação", transactionColor: "GreenColor", transactionSymbol: "+", transactionValue: 1000),
-        TransactionsCellEntities(id: "2", transactionName: "Nome Transação", transactionColor: "GreenColor", transactionSymbol: "+", transactionValue: 1000),
-        TransactionsCellEntities(id: "3", transactionName: "Nome Transação", transactionColor: "GreenColor", transactionSymbol: "+", transactionValue: 1000),
-        TransactionsCellEntities(id: "4", transactionName: "Nome Transação", transactionColor: "GreenColor", transactionSymbol: "+", transactionValue: 1000),
-        TransactionsCellEntities(id: "5", transactionName: "Nome Transação", transactionColor: "GreenColor", transactionSymbol: "+", transactionValue: 1000),
-        TransactionsCellEntities(id: "6", transactionName: "Nome Transação", transactionColor: "RedColor", transactionSymbol: "+", transactionValue: 1000)
-    ]
+    var transactions: [TransactionsCellEntities] = []
     
     var moneySymbol: String = "R$"
     var transactionsTitle: String = ""
@@ -105,8 +99,8 @@ struct MonthlyView: View {
                         
                         List {
                             Section(header: Text("Transações de \(month)")) {
-                                ForEach(transactions) { title in
-                                    TransactionsCell(title: title.transactionName, value: title.transactionValue, transactionSymbol: title.transactionSymbol, transactionColorName: title.transactionColor)
+                                ForEach(appData.listTransactions) { transaction in
+                                    TransactionsCell(title: transaction.transactionName, value: transaction.transactionValue, transactionSymbol: transaction.transactionType).environmentObject(self.appData)
                                     
                                 }
                                 

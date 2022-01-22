@@ -27,11 +27,19 @@ struct OutgoingTransactionView: View {
     @State private var selectionTransactionOrigin: String = "Padrão"
     @State private var transactionType: String = "outgoing"
     
-    //let wallet: CKRecord.ID
     
     @State private var showingAlert = false
     
     @Environment(\.dismiss) var dismiss
+    
+    
+    let formatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.locale = Locale(identifier: "pt_BR")
+        formatter.minimumFractionDigits = 2
+        return formatter
+    }()
     
     var body: some View {
         
@@ -41,11 +49,25 @@ struct OutgoingTransactionView: View {
                 Color("SheetBackgroundColor").ignoresSafeArea()
                 VStack {
                     
-                    //FIXME:  nao está puxando textfield
-                    TransactionDisplay(transactionSymbol: "-", transactionColor: "RedColor", transactionValue: transactionValue)
-                    
-                    
-                    
+                    HStack {
+                        Text("R$").font(.system(size: 36)).bold()
+                            .foregroundColor(Color("RedColor"))
+                            .padding(.leading,10)
+                        
+                        TextField("",value: $transactionValue, formatter: formatter)
+                            .font(.system(size: 36, weight: .bold))
+                            .foregroundColor(Color("RedColor"))
+                            .multilineTextAlignment(.trailing)
+                            .keyboardType(.decimalPad)
+                            
+                        
+                        Text("-").font(.system(size: 36)).bold()
+                            .foregroundColor(Color("RedColor"))
+                            .padding(.trailing,10)
+                    }
+                    .frame(width: 330, height: 80)
+                    .background(Color("DisplayColor"))
+                    .cornerRadius(10)
                     
                     VStack(){
                         
