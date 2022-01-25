@@ -30,7 +30,7 @@ struct Transaction {
     
 }
 
-struct Goal {
+struct Goal: Hashable {
     let goalName: String
     let goalValue: Double
     let goalCategory: String
@@ -68,7 +68,7 @@ struct WalletViewModel: Identifiable {
     
 }
 
-struct TransactionViewModel: Identifiable {
+struct TransactionViewModel: Identifiable, Hashable{
     let id: CKRecord.ID
     let transaction: Transaction
     
@@ -110,7 +110,7 @@ struct TransactionViewModel: Identifiable {
     
 }
 
-struct GoalViewModel: Identifiable {
+struct GoalViewModel: Identifiable, Hashable {
     let id: CKRecord.ID
     let goal: Goal
     
@@ -414,4 +414,21 @@ class AppData: ObservableObject {
         })
     }
     
+    
+    func deleteFunc(ID: CKRecord.ID, completion: @escaping (Result<CKRecord.ID,CKError>) -> Void) {
+        database.delete(withRecordID: ID) { deleteRecordID, error in
+            if error == nil {
+                DispatchQueue.main.async {
+                    completion(.success(deleteRecordID!))
+                    
+                }
+            } else {
+                
+                completion(.failure(error as! CKError))
+            }
+        }
+    }
+    
+    
+
 }

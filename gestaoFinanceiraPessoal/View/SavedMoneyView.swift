@@ -6,18 +6,36 @@
 //
 
 import SwiftUI
+import CloudKit
 
 struct SavedMoneyView: View {
     
     @EnvironmentObject var appData : AppData
     
-    var goalTotalToSave: Double = 0
+    
     var totalAlreadySaved: Double = 0
     
     @State var showSheetNewSavedMoney = false
     @State var showSheetSaveMoneyTransaction = false
     
     @Environment(\.dismiss) var dismiss
+    @State var selectedGoal = Set<GoalViewModel>()
+    
+    var goalTotalToSave: Double {
+        var sum: Double = 0
+        for totalGoal in appData.listGoals {
+            sum += totalGoal.goalValue
+        }
+        return sum
+    }
+    
+    //    var totalAlreadySaved: Double {
+    //
+    //
+    //
+    //        return
+    //    }
+    
     
     
     var body: some View {
@@ -27,44 +45,47 @@ struct SavedMoneyView: View {
                 //Color("ViewBackgroundColor").ignoresSafeArea()
                 
                 VStack() {
-                    List {
+                    List(selection: $selectedGoal) {
                         ForEach(appData.listGoals) { goal in
                             SavedMoneyCell(title: goal.goalName, moneySymbol: "R$", moneyToSave: goal.goalValue, moneyAlreadySaved: goal.goalSaved) {
                                 self.showSheetSaveMoneyTransaction.toggle()
                             }.sheet(isPresented: $showSheetSaveMoneyTransaction) {
-                                SavedMoneyTransactionView(selectedGoal: goal)
+                                SavedMoneyTransactionView( goal: goal.id).environmentObject(self.appData)
                             }
-
+                            .swipeActions(edge: .trailing) {
+                                Button {
+                                    //Func delete cloudkit
+                                    appData.deleteFunc(ID: goal.id ) { result in
+                                        switch result {
+                                        case.success(let id):
+                                            //"O que fazer quando deu certo a deleção"
+                                            print("")
+                                        case.failure(let error):
+                                            // deu ruim e agora?
+                                            print("")
+                                        }
+                                    }
+                                    
+                                    
+                                } label: {
+                                    Label("Apagar", systemImage: "trash")
+                                }
+                                
+                                .tint(.red)
+                            }
                         }
                         .listRowBackground(Color("SheetBackgroundColor"))
                         .listRowSeparator(.hidden)
                         
-                        .swipeActions(edge: .trailing) {
-                            Button {
-                                //Func delete cloudkit
-                                
-                            } label: {
-                                Label("Apagar", systemImage: "trash")
-                            }
-                            
-                            .tint(.red)
-                        }
                         
                     }
-//                    .swipeActions(edge: .trailing, allowsFullSwipe: true) {
-//                        func deleteRecord(withID recordID: CKReecord.ID) async throws -> CKRecord.ID
-//                    }
                     
-
+                    
                     SavedBallenceView(goalToSave: goalTotalToSave, ballanceSavedMoney: totalAlreadySaved)
                         .padding([.leading, .trailing], 15)
                         .padding(.top, 10)
                 }
             }
-            
-            
-            
-            
             
             
             .navigationBarTitleDisplayMode(.inline)
@@ -73,15 +94,15 @@ struct SavedMoneyView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button ("Criar"){
                         self.showSheetNewSavedMoney.toggle()
-
+                        
                     }
                     .sheet(isPresented: $showSheetNewSavedMoney) {
                         NewSavedMoneyView()
                     }
                     .foregroundColor(.blue)
                     
-                
-                .foregroundColor(Color("BasicFontColor"))
+                    
+                    .foregroundColor(Color("BasicFontColor"))
                 }
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button ("Voltar") {

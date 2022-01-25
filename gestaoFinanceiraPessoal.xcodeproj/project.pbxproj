@@ -32,7 +32,6 @@
 		B0ED6F392795B52F00ADA9E8 /* SavedMoneyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ED6F382795B52F00ADA9E8 /* SavedMoneyCell.swift */; };
 		B0ED6F3B2795B6F600ADA9E8 /* SavedMoneyCellChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ED6F3A2795B6F600ADA9E8 /* SavedMoneyCellChart.swift */; };
 		B0ED6F3D2795BB6500ADA9E8 /* SavedMoneyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ED6F3C2795BB6500ADA9E8 /* SavedMoneyView.swift */; };
-		B0ED6F3F2795CF1400ADA9E8 /* GoalTotal.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ED6F3E2795CF1400ADA9E8 /* GoalTotal.swift */; };
 		B0ED6F412795DBC800ADA9E8 /* SavedBallanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ED6F402795DBC800ADA9E8 /* SavedBallanceView.swift */; };
 		B0ED6F432795DDE000ADA9E8 /* NewSavedMoneyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ED6F422795DDE000ADA9E8 /* NewSavedMoneyView.swift */; };
 		B0ED6F462795E00700ADA9E8 /* SavedMoneyTransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0ED6F452795E00700ADA9E8 /* SavedMoneyTransactionView.swift */; };
@@ -73,7 +72,6 @@
 		B0ED6F382795B52F00ADA9E8 /* SavedMoneyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedMoneyCell.swift; sourceTree = "<group>"; };
 		B0ED6F3A2795B6F600ADA9E8 /* SavedMoneyCellChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedMoneyCellChart.swift; sourceTree = "<group>"; };
 		B0ED6F3C2795BB6500ADA9E8 /* SavedMoneyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedMoneyView.swift; sourceTree = "<group>"; };
-		B0ED6F3E2795CF1400ADA9E8 /* GoalTotal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalTotal.swift; sourceTree = "<group>"; };
 		B0ED6F402795DBC800ADA9E8 /* SavedBallanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedBallanceView.swift; sourceTree = "<group>"; };
 		B0ED6F422795DDE000ADA9E8 /* NewSavedMoneyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSavedMoneyView.swift; sourceTree = "<group>"; };
 		B0ED6F452795E00700ADA9E8 /* SavedMoneyTransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedMoneyTransactionView.swift; sourceTree = "<group>"; };
@@ -175,8 +173,8 @@
 				B0BB5F912790A0DF00C4066D /* NewWalletView.swift */,
 				B0BB5F952790D9E300C4066D /* IncomingTransactionView.swift */,
 				B0ED6F2B279205EF00ADA9E8 /* OutgoingTransactionView.swift */,
-				B0ED6F3C2795BB6500ADA9E8 /* SavedMoneyView.swift */,
 				B0ED6F2D279208FD00ADA9E8 /* MonthlyView.swift */,
+				B0ED6F3C2795BB6500ADA9E8 /* SavedMoneyView.swift */,
 				B0ED6F422795DDE000ADA9E8 /* NewSavedMoneyView.swift */,
 				B0ED6F452795E00700ADA9E8 /* SavedMoneyTransactionView.swift */,
 			);
@@ -188,7 +186,6 @@
 			children = (
 				B0ED6F3027920A2D00ADA9E8 /* TransactionsCellEntities.swift */,
 				B0ED6F3227920A9800ADA9E8 /* NumberFormatter.swift */,
-				B0ED6F3E2795CF1400ADA9E8 /* GoalTotal.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -300,7 +297,6 @@
 				B0BB5F81278FA2FD00C4066D /* IncomingButton.swift in Sources */,
 				B0BB5F8927905F4700C4066D /* OnBoardingSteps.swift in Sources */,
 				B0ED6F412795DBC800ADA9E8 /* SavedBallanceView.swift in Sources */,
-				B0ED6F3F2795CF1400ADA9E8 /* GoalTotal.swift in Sources */,
 				B00478A1278F17E100BE9D9C /* ContentView.swift in Sources */,
 				B0ED6F4C2798807C00ADA9E8 /* PieSliceView.swift in Sources */,
 				B0ED6F3B2795B6F600ADA9E8 /* SavedMoneyCellChart.swift in Sources */,

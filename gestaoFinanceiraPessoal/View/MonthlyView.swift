@@ -11,10 +11,35 @@ import SwiftUI
 struct MonthlyView: View {
     
     @EnvironmentObject var appData: AppData
+    @State var selectedTransaction = Set<TransactionViewModel>()
     
-    var incomingValue: Double = 0
-    var outgoingValue: Double = 0
-    var balanceValue: Double = 0
+    var incomingValue: Double {
+        var sum: Double = 0
+        for totalOutgoing in appData.listTransactions {
+            if totalOutgoing.transactionType == "incoming" {
+                sum += totalOutgoing.transactionValue
+            }
+            
+        }
+        return sum
+    }
+    
+    var outgoingValue: Double {
+        var sum: Double = 0
+        for totalOutgoing in appData.listTransactions {
+            if totalOutgoing.transactionType == "outgoing" {
+                sum += totalOutgoing.transactionValue
+            }
+        }
+        return sum
+    }
+    
+    
+    var balanceValue: Double {
+        var total = incomingValue - outgoingValue
+        return total
+    }
+    
     var savedValue: Double = 0
     var month: String = "Janeiro"
     
@@ -28,8 +53,6 @@ struct MonthlyView: View {
     }()
     
     
-    
-    var transactions: [TransactionsCellEntities] = []
     
     var moneySymbol: String = "R$"
     var transactionsTitle: String = ""
@@ -78,7 +101,7 @@ struct MonthlyView: View {
                                     .foregroundColor(Color("RedColor"))
                                 
                                 
-                                Text(String(incomingValue))
+                                Text(String(outgoingValue))
                                     .font(.system(size: 17)).bold()
                                     .foregroundColor(Color("RedColor"))
                                     .frame(maxWidth: .infinity,alignment: .leading)
@@ -102,6 +125,27 @@ struct MonthlyView: View {
                                 ForEach(appData.listTransactions) { transaction in
                                     TransactionsCell(title: transaction.transactionName, value: transaction.transactionValue, transactionSymbol: transaction.transactionType).environmentObject(self.appData)
                                     
+                                        .swipeActions(edge: .trailing) {
+                                            Button {
+                                                //Func delete cloudkit
+                                                appData.deleteFunc(ID: transaction.id ) { result in
+                                                    switch result {
+                                                    case.success(let id):
+                                                        //"O que fazer quando deu certo a deleção"
+                                                        print("")
+                                                    case.failure(let error):
+                                                        // deu ruim e agora?
+                                                        print("")
+                                                    }
+                                                }
+                                                
+                                                
+                                            } label: {
+                                                Label("Apagar", systemImage: "trash")
+                                            }
+                                            
+                                            .tint(.red)
+                                        }
                                 }
                                 
                             }
@@ -111,7 +155,7 @@ struct MonthlyView: View {
                         
                     }
                     VStack() {
-                        BallanceView(savedValue: 1000, month: "\(month)", ballanceValue: 10000)
+                        BallanceView(savedValue: 1000, month: "\(month)", ballanceValue: balanceValue)
                     }
                     .padding([.leading, .trailing], 15)
                     .padding(.top, 10)
@@ -152,8 +196,8 @@ struct MonthlyView: View {
     
 }
 
-struct MonthlyView_Previews: PreviewProvider {
-    static var previews: some View {
-        MonthlyView(incomingValue: 1000000, outgoingValue: 000, balanceValue: 100, savedValue: 10000, month: "Fevereiro")
-    }
-}
+//struct MonthlyView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MonthlyView
+//    }
+//}

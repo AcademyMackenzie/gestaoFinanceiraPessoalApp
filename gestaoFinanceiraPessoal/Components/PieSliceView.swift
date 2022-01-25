@@ -31,12 +31,13 @@ struct PieSliceView: View {
                 }
                 .fill(pieSliceData.color)
                 
-                Text(pieSliceData.text).font(.system(size: 15))
+                Text(pieSliceData.text).font(.system(size: 12))
                     .position(
                         x: geometry.size.width * 0.5 * CGFloat(1.0 + 0.78 * cos(self.midRadians)),
                         y: geometry.size.height * 0.5 * CGFloat(1.0 - 0.78 * sin(self.midRadians))
                     )
                     .foregroundColor(Color("BasicFontColor"))
+                    
             }
         }
         .aspectRatio(1, contentMode: .fit)
@@ -53,6 +54,6 @@ struct PieSliceData {
 
 struct PieSliceView_Previews: PreviewProvider {
     static var previews: some View {
-        PieSliceView(pieSliceData: PieSliceData(startAngle: Angle(degrees: 0.0), endAngle: Angle(degrees: 220.0), text: "A", color: .black))
+        PieSliceView(pieSliceData: PieSliceData(startAngle: Angle(degrees: 0.0), endAngle: Angle(degrees: 220.0), text: "A", color: .red))
     }
 }

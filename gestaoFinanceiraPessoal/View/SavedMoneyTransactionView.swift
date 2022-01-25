@@ -6,19 +6,24 @@
 //
 
 import SwiftUI
+import CloudKit
+
 
 struct SavedMoneyTransactionView: View {
     
     @EnvironmentObject var appData: AppData
-    let selectedGoal: GoalViewModel
     
     @State private var selectedItem: SegmetageItensSavedMoney = .save
     
-    var transactionValue: Double = 0
-    
     @State private var showingAlert = false
+    @State private var transactionGoalName = ""
+    @State private var transactionGoalType: String = ""
+    @State private var transactionGoalValue: Double = 0
+    @State private var transactionGoalDate: Date = Date()
     
     @Environment(\.dismiss) var dismiss
+    
+    let goal: CKRecord.ID
     
     var body: some View {
         NavigationView {
@@ -35,7 +40,7 @@ struct SavedMoneyTransactionView: View {
                     .pickerStyle(.segmented)
                     .padding()
                     
-                    SegmentedFormImplementation(selectedIten: selectedItem, transactionValue: transactionValue)
+                    SegmentedFormImplementation(selectedIten: selectedItem, transactionValue: transactionGoalValue)
                 }
                 
             }
@@ -44,6 +49,13 @@ struct SavedMoneyTransactionView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button ("Salvar"){
                         // logica
+                        
+                        if selectedItem == .save {
+                            self.appData.insertTransactionsGoals(name: transactionGoalName, value: transactionGoalValue, date: transactionGoalDate, type: "saved", goal: self.goal)
+                         
+                        } else {
+                            self.appData.insertTransactionsGoals(name: transactionGoalName, value: transactionGoalValue, date: transactionGoalDate, type: "removedSave", goal: self.goal)
+                        }
                         
                         dismiss()
                     }

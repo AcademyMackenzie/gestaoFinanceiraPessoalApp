@@ -12,13 +12,11 @@ import CloudKit
 struct HomeView: View {
     
     @EnvironmentObject var appData: AppData
-
-    var transactions: [TransactionsCellEntities] = []
+    
     
     var moneySymbol: String = "R$"
     var transactionsTitle: String = "Últimas Transações"
     
-    //let selectedWallet: WalletViewModel
     
     @State var showSheetNewWallet = false
     @State var showSheetNewIncoming = false
@@ -27,8 +25,26 @@ struct HomeView: View {
     @State var showSheetMonthlyView = false
     
     var savedTotal: Double = 0
-    var incomingTotal: Double = 0
-    var outgoingTotal: Double = 0
+    var incomingTotal: Double {
+        var sum: Double = 0
+        for totalOutgoing in appData.listTransactions {
+            if totalOutgoing.transactionType == "incoming" {
+                sum += totalOutgoing.transactionValue
+            }
+            
+        }
+        return sum
+    }
+    
+    var outgoingTotal: Double {
+        var sum: Double = 0
+        for totalOutgoing in appData.listTransactions {
+            if totalOutgoing.transactionType == "outgoing" {
+                sum += totalOutgoing.transactionValue
+            }
+        }
+        return sum
+    }
     
     var alreadySavedTotal: Double = 0
     var goalToSaveTotal: Double = 0
@@ -88,7 +104,7 @@ struct HomeView: View {
                             ForEach(appData.listTransactions) { transaction in
                                 TransactionsCell(title: transaction.transactionName, value: transaction.transactionValue, transactionSymbol: transaction.transactionType).environmentObject(self.appData)
                                 
-                            }
+                            }   
                         }.listStyle(.insetGrouped)
                         
                         
